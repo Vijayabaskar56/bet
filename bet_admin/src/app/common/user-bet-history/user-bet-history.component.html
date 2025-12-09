@@ -1,0 +1,233 @@
+<section class="py-5">
+    <div class=" px-sm-0">
+        <div class="row">
+            <div class="col">
+                <h5>User History</h5>
+            </div>
+            <!-- <div class="col small text-end">
+                <span>Total Records: <b>0</b></span>
+                <span class="ms-2">Total Pnl: <b> 0.00</b> </span>
+                <span class="ms-2">Total Stakes: <b>0.00</b></span>
+            </div> -->
+        </div>
+        <div class="row">
+            <div class="col-xl-2 col-sm-4 mt-3">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
+                    </span>
+                    <input type="text"  [(ngModel)]="searchData.user_name" name="contractAddress" class="form-control shadow-none" placeholder="Search User" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="col-xl-2 col-sm-4 mt-3 w-25">
+                <div class="d-flex align-items-center">
+                    <span class=" fw-medium me-2 text-nowrap">Status :</span>
+                    <select class="form-select shadow-none" aria-label="Default select example" (change)="dropDownChanges('status',$event)">
+                        <option *ngIf="!searchData.status" value="" disabled selected>Select Status</option>
+                        <option value="matched">Matched</option>
+                        <option value="canceled">Canceled</option>
+                        <option value="settled">Settled</option>
+                      </select>
+                </div>
+            </div>
+            <div class="col-xl-2 col-sm-4 mt-3  w-25">
+                <div class="d-flex align-items-center">
+                    <span class=" fw-medium me-2 text-nowrap">Odd Type :</span>
+                    <select class="form-select shadow-none" aria-label="Default select example"  (change)="dropDownChanges('marketType',$event)">
+                        <option *ngIf="!searchData.marketType" value="" disabled selected >Select Type</option>
+                        <option value="1">Match</option>
+                        <option value="2">Bookmaker</option>
+                        <option value="3">Fancy</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xl-2 col-sm-4 mt-3  w-25">
+                <div class="d-flex align-items-center">
+                    <span class=" fw-medium me-2 text-nowrap">Side :</span>
+                    <select class="form-select shadow-none" aria-label="Default select example"  (change)="dropDownChanges('type',$event)">
+                        <option *ngIf="!searchData.type" value="" disabled selected >Select Side</option>
+                        <option value="lay">Lay</option>
+                        <option value="back">Back</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-primary m-2" (click)="filterData(true)" >Search</button>
+                <button class="btn btn-primary m-2" (click)="filterData(false)" >Clear</button>
+            </div>
+            <!-- <div class="col-xl-2 col-sm-4 mt-3">
+                <div class="d-flex align-items-center">
+                    <span class="small fw-medium me-2">Last:</span>
+                    <select class="form-select shadow-none" aria-label="Default select example">
+                        <option selected>10 Txn</option>
+                        <option value="1">25 Txn</option>
+                        <option value="2">50 Txn</option>
+                        <option value="3">100 Txn</option>
+                        <option value="3">Full</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xl-2 col-sm-4 mt-3">
+                <div class="d-flex align-items-center">
+                    <span class="small fw-medium me-2 text-nowrap">Stake >=:</span>
+                    <input type="number" class="form-control shadow-none" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div> -->
+            <!-- <div class="col text-end mt-3">
+                <button class="btn-orange rounded small"  data-bs-toggle="offcanvas" data-bs-target="#filterBet" aria-controls="filterBet" >Filter</button>
+            </div> -->
+        </div>
+        <div class="bg-light p-3 rounded m-2 h-100 mt-4 table-responsive">
+            <h6>Matched</h6>
+            <table class="table table-light table-striped table-hover small text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">S.No</th>
+                    <!-- <th scope="col">Placed Date</th> -->
+                    <th scope="col">User</th>
+                    <th scope="col">Match</th>
+                    <th scope="col">Event</th>
+                    <th scope="col">Selection</th>
+                    <!-- <th scope="col">Match ID</th> -->
+                    <th scope="col">Type</th>
+                    <th scope="col">Side</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Profit / Loss</th>
+                    <!-- <th scope="col">Action</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let data of historyData | paginate:{itemsPerPage:page?.itemsPerPage,currentPage:page?.page_no,totalItems:page?.total_page} ; let i = index">
+                        <td>{{page.s_no + i+1}}</td>
+                        <td>{{data?.user_name}}</td>
+                        <td>{{data?.matchName}}</td>
+                        <td>{{data?.eventName}}</td>
+                        <td>{{data?.selectionName}}</td>
+                        <td>{{data?.oddType}}</td>
+                        <td>{{data?.type}}</td>
+                        <td>{{data?.price}}</td>
+                        <td>{{data?.size}}</td>
+                        <td>{{data?.status}}</td>
+                        <td>{{data?.status =='settled'?data?.profitLoss : '-'}}</td>
+                        <!-- <td><button class="btn btn-primary">view</button></td> -->
+                    </tr>
+                    <tr *ngIf="!historyData.length" class="text-center">
+                        <td colspan="12">--No Records Found--</td>
+                      </tr>
+                  <tr>                    
+                  </tr>                  
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-end" *ngIf="page?.total_page > page?.itemsPerPage" >
+                <div class="pagination">
+                    <pagination-controls
+                        (pageChange)="handleEvent(page.page_no = $event)">
+                      </pagination-controls>
+                </div>
+              </div>
+        </div>
+    </div>
+</section>
+
+
+      <div class="offcanvas offcanvas-end bg-light" tabindex="-1" id="filterBet" aria-labelledby="filterBetLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="filterBetLabel">Filter</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body bg-light">
+            <div class="ps-4">
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="radio" name="all" id="all" checked>
+                    <label class="form-check-label" for="all">
+                        All
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="radio" name="Soccer" id="Soccer">
+                    <label class="form-check-label" for="Soccer">
+                        Soccer
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="radio" name="Tennis" id="Tennis">
+                    <label class="form-check-label" for="Tennis">
+                        Tennis
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="radio" name="Cricket" id="Cricket">
+                    <label class="form-check-label" for="Cricket">
+                        Cricket
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="radio" name="Premium" id="Premium">
+                    <label class="form-check-label" for="Premium">
+                        Premium
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="radio" name="Bookmaker" id="Bookmaker">
+                    <label class="form-check-label" for="Bookmaker">
+                        Bookmaker
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="radio" name="parlay" id="parlay">
+                    <label class="form-check-label" for="parlay">
+                        parlay
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="radio" name="Live Casino" id="Live Casino">
+                    <label class="form-check-label" for="Live Casino">
+                        Live Casino
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="radio" name="Horse Racing" id="Horse Racing">
+                    <label class="form-check-label" for="Horse Racing">
+                        Horse Racing
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="radio" name="Greyhound Racing" id="Greyhound Racing">
+                    <label class="form-check-label" for="Greyhound Racing">
+                        Greyhound Racing
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="radio" name="Kabaddi" id="Kabaddi">
+                    <label class="form-check-label" for="Kabaddi">
+                        Kabaddi
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="radio" name="Election" id="Election">
+                    <label class="form-check-label" for="Election">
+                        Election
+                    </label>
+                </div>                
+            </div>
+            <div class="p-4">
+                <select class="form-select shadow-none" aria-label="Default select example">
+                    <option selected>Select user</option>
+                </select>
+                <select class="form-select shadow-none mt-4" aria-label="Default select example">
+                    <option selected>Select Event</option>
+                </select>
+                <select class="form-select shadow-none mt-4" aria-label="Default select example">
+                    <option selected>Select Market</option>
+                </select>
+                <select class="form-select shadow-none mt-4" aria-label="Default select example">
+                    <option selected>Select Currency</option>
+                </select>
+            </div>
+        </div>
+      </div>
+    

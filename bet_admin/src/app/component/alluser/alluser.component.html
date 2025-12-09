@@ -1,0 +1,92 @@
+<!-- Marquee -->
+<div class="btn-orange rounded-0 border-0 py-0">
+    <div class="row align-items-center">
+        <div class="col-auto">
+            <div>
+                <img src="../../../assets/img/news_.png" class="img-fluid play-icon" width="32" height="32" alt="news">
+            </div>
+        </div>
+        <div class="col">
+            <marquee behavior="" direction="left" class="mt-1" style="font-size: 11px;">Welcome to Betting Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium magni quae voluptas aliquid similique officia laudantium nihil veritatis recusandae aspernatur, aut eum, quia minima, beatae voluptatum vitae quo quis commodi.</marquee>
+        </div>
+    </div>
+</div>
+
+
+<section class="py-6">
+    <div class=" px-sm-0">
+        <div class="row mt-4">
+            <div class="col-xl-3 col-sm-4">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
+                    </span>
+                    <input type="text" class="form-control shadow-none" [formControl]="searchText" placeholder="Find Member" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-4">
+                <button class="btn btn-orange" (click)="searchFilter($event)">search</button>
+                <button class="btn btn-orange ms-3" (click)="clear()">clear</button>
+            </div>                
+        </div>
+        <div class="row row-cols-xl-6 row-cols-md-3 row-cols-sm-2 row-cols-1 g-0">
+            <div class="col">
+                <div class="bg-light p-3 rounded m-2 h-100">
+                    <h6 class="text-muted small">Total Users</h6>
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="mt-4 mb-0 d-inline">{{page.total_page}}</h6>
+                            <!-- <span class="ms-2 small">INR</span> -->
+                        </div>                       
+                    </div>                        
+                </div>    
+            </div>
+            <div class="col">
+                <div class="bg-light p-3 rounded m-2 h-100">
+                    <h6 class="text-muted small">Total Admin</h6>
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="mt-4 mb-0 d-inline">0</h6>
+                            <!-- <span class="ms-2 small">INR</span> -->
+                        </div>                       
+                    </div>                        
+                </div>   
+            </div>
+            <div class="col">
+                <div class="bg-light p-3 rounded m-2 h-100">
+                    <h6 class="text-muted small">Total Players</h6>
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="mt-4 mb-0 d-inline">0</h6>
+                            <!-- <span class="ms-2 small">INR</span> -->
+                        </div>                       
+                    </div>                        
+                </div> 
+            </div>
+            <div class="col">
+                <div class="bg-light p-3 rounded m-2 h-100">
+                    <h6 class="text-muted small">Online Users</h6>
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="mt-4 mb-0 d-inline">0</h6>
+                            <!-- <span class="ms-2 small">INR</span> -->
+                        </div>                       
+                    </div>                        
+                </div> 
+            </div>           
+        </div>
+        <div class="bg-light p-3 rounded m-2 h-100 mt-4 table-responsive">
+                  <ag-grid-angular style="height: 300px;" class="w-100"
+                  [rowData]="rowData | paginate : {itemsPerPage : page?.itemsPerPage,currentPage:page?.page_no,totalItems:page?.total_page}"
+                  [columnDefs]="colDefs"
+                  class="ag-theme-quartz"
+                  (gridReady)="onGridReady($event)"/>      
+                  <div class="pagination justify-content-end mt-3"  *ngIf="page?.total_page > page?.itemsPerPage">
+                      <pagination-controls
+                          (pageChange)="handlePagination(page.page_no=$event)"></pagination-controls>
+                  </div>         
+        </div>
+    </div>
+</section>

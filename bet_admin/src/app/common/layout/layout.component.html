@@ -1,0 +1,20 @@
+<app-header></app-header>
+<main class="bg-dashboard overflow-x-hidden">
+        <div class="row">
+            
+            <!-- sidebar start -->
+            <div class="col-md-3 col-lg-2 px-0">
+                <app-sidebar></app-sidebar>
+            </div>  
+            <!-- sidebar end -->
+
+            <!-- main content start -->
+            <div class="col-md-9 ms-sm-auto col-lg-10 pe-lg-4 ps-xl-5 ps-lg-5 ps-md-4">
+                <!-- <app-breadcrumb></app-breadcrumb> -->
+                <router-outlet></router-outlet>
+            </div>
+            <!-- main content end -->
+        
+        </div>
+</main>
+<!-- <app-footer></app-footer> -->

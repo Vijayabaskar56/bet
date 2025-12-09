@@ -1,0 +1,140 @@
+<section class="py-6">
+    <div class=" px-sm-0">
+        <div class="row">
+            <div class="col-xl-3 col-sm-4 mt-4">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
+                    </span>
+                    <input type="text" class="form-control shadow-none" placeholder="Enter userId" aria-label="Username" aria-describedby="basic-addon1">                    
+                </div>
+            </div>                   
+            <div class="col-xxl-2 col-sm-4 mt-4">
+                <div class="d-flex align-items-center">
+                    <span class="small fw-medium me-2 text-nowrap">Status:</span>
+                    <select class="form-select shadow-none" aria-label="Default select example">
+                        <option selected>All</option>
+                        <option value="1">Active</option>
+                        <option value="1">Locked</option>
+                        <option value="1">Suspended</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-sm-3 mt-4 ms-auto align-self-center" *ngIf="userDetails?.role > 1">
+                <div class="row align-items-center">                   
+                    <div class="col-auto text-end">
+                        <span class="small fw-medium me-2 text-nowrap">Your Balance:</span>
+                    </div>
+                    <div class="col">
+                        <h4 class="mt-4 mb-0 d-inline">{{balance}}</h4>
+                        <span class="ms-2 small">INR</span>
+                    </div>
+                </div> 
+            </div>
+        </div>        
+        <ul class="nav nav-tabs m-2 mb-0" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="Credit-tab" data-bs-toggle="tab" data-bs-target="#Credit-tab-pane" type="button" role="tab" aria-controls="Credit-tab-pane" aria-selected="true">Credit Reference</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="Winner-tab" data-bs-toggle="tab" data-bs-target="#Winner-tab-pane" type="button" role="tab" aria-controls="Winner-tab-pane" aria-selected="false">Winner</button>
+            </li>           
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="Credit-tab-pane" role="tabpanel" aria-labelledby="Credit-tab" tabindex="0">
+                <div class="bg-light p-3 rounded m-2 h-100 mt-0 table-responsive">
+                    <table class="table table-light table-striped table-hover small align-middle">
+                        <thead>
+                          <tr>
+                            <th scope="col">UID</th>
+                            <th>Available Balance</th>
+                            <th>User Name</th>
+                            <th>Exposure</th>                    
+                            <th>Deposit / Withdraw</th>                    
+                            <th>Credit Reference</th>                    
+                            <th>Reference P/L</th>                    
+                            <th>Remark</th>                    
+                            <th><Button class="btn-orange small" routerLink="/bankinglog">All</Button></th>                    
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr  *ngFor="let datas of details; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{datas?.balance}}</td>
+                            <td>{{datas?.name}}</td>
+                            <td class="text-danger">(0.00)</td>
+                            <td>
+                               <div class="d-flex gap-3">
+                                <ul class="list-unstyled d-flex align-items-center mb-0">
+                                    <li>
+                                        <button class="paymentbtn depositbtn" (click)="depositWithdraw(datas._id,'deposit')">D</button>
+                                    </li>
+                                    <li>
+                                        <button class="withdrawbtn" (click)="depositWithdraw(datas._id,'withdraw')">W</button>
+                                    </li>
+                                </ul>
+                                <div class="form-control w-50">
+                                    <span [ngClass]="datas._id == data.receiverId && deposited ? 'text-success' : 'text-danger'">{{datas._id == data.receiverId && deposited ? '+' : '-'}}
+                                    </span>
+                                    <input type="text" class="text-end border-0 amtinput" (input)="amtChanges(datas._id)"  onkeypress='return event.charCode >= 48 && event.charCode <= 57' [formControl]="amt">
+                                </div>
+                               </div>
+                            </td>
+                            <td>0.00</td>
+                            <td>0.00</td>
+                            <td></td>
+                            <td></td>
+                          </tr>                  
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="Winner-tab-pane" role="tabpanel" aria-labelledby="Winner-tab" tabindex="0">
+                <div class="bg-light p-3 rounded m-2 h-100 table-responsive">
+                    <table class="table table-light table-striped table-hover small align-middle">
+                        <thead>
+                          <tr>
+                            <th scope="col">UID</th>
+                            <th>Available Balance</th>
+                            <th>Exposure</th>                    
+                            <th>Deposit / Withdraw</th>                    
+                            <th>Credit Reference</th>                    
+                            <th>Reference P/L</th>                    
+                            <th>Remark</th>                    
+                            <th><Button class="btn-orange small" routerLink="/bankinglog">All</Button></th>                    
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Total</td>
+                            <td>0.00</td>
+                            <td class="text-danger">(0.00)</td>
+                            <td></td>
+                            <td>0.00</td>
+                            <td>0.00</td>
+                            <td></td>
+                            <td></td>
+                          </tr>                  
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>  
+        
+        <div class="row justify-content-center align-items-center text-center">
+            <div class="col-sm-auto mt-3">
+                <button class="btn btn-dark btn-sm px-3" (click)="clearAll()">
+                    Clear All
+                </button>
+            </div>
+            <div class="col-md-2 col-sm-3 mt-3">
+                <input type="password" placeholder="Password" [formControl]="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-6 mt-3">
+                <button class="btn-orange fw-normal small" (click)="payment()">Submit Payment</button>
+            </div>
+        </div>
+    </div>
+</section>

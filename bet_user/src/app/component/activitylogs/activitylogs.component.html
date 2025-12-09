@@ -1,0 +1,40 @@
+<section class="sidebar-right-section-padding position-relative page-height ">
+    <div class="upcoming-bar p-2">
+      <p class="mb-0 fw-bold text-center">User Activities</p>
+    </div>
+    <div class="m-4">
+        
+        <div class="mt-4 table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th class="text-center">Login Date & Time</th>
+                <th class="text-center">Login Status</th>
+                <th class="text-center">IP Address</th>
+                <th class="text-center">Device</th>
+                <th class="text-center">City/Country</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr *ngFor="let each of loginDetails | paginate : {itemsPerPage:pageDet.itemsPerPage,currentPage:pageDet.page_no,totalItems:pageDet.total_page}">
+                <td class="">{{each.createdAt | date : 'short'}}</td>
+                <td class="">Login Successful</td>
+                <td class="">{{each.ipaddress}}</td>
+                <td class="">{{each.browser}} / {{each.os}}</td>
+                <td class="">{{each.city}} / {{each.country}}</td>
+              </tr>
+              <tr *ngIf="loginDetails?.length == 0" class="text-center">
+                <td colspan="5">
+                  --No Record Found --
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div *ngIf="pageDet.total_page > pageDet.itemsPerPage + 1 " class="d-flex justify-content-end">
+          <div class="pagination">
+            <pagination-controls (pageChange)="handlePageEvent(pageDet.page_no = $event)"></pagination-controls>
+        </div>
+      </div>
+        </div>
+      </div>
+  </section>

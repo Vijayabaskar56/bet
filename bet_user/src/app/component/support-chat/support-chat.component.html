@@ -1,0 +1,175 @@
+<div class="section-padding">
+    <div class="py-2">
+      <div class="container-fluid px-0">
+<section class="container-fluid">
+    <div class="container">
+        <div class="d-flex justify-content-center bg-white rounded-3 night-bg chat-box">
+            <!-- <div class="col-lg-4 ticket-grp px-0">
+                <div class="p-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="fw-semibold mb-0">Ticket List</h5>
+                        <div class="">
+                            <button type="button" (click)="openDialog(createTicketDialog)" class="btn create_btn">+</button>
+                        </div>
+                    </div>
+                    <div class="mt-3 search-div mb-1">
+                        <div class="position-relative">
+                            <input type="search" placeholder="Search Ticket ID..." maxlength="10" class="form-control p-2" aria-label="Search" aria-describedby="search-addon" name="search" [(ngModel)]="searchText">
+                        </div>
+                    </div>
+                    <div class="ticket-for-div">
+                        <!-- <div class="mt-2 ticket-for-grp p-2" *ngFor=" let data of ticket | filter:searchText" (click)="ticketById(data.ticket_id)">
+                            <div class="">
+                                <p class="mb-0">Ticket Id: <span class="fw-semibold">{{data?.ticket_id}}</span></p>
+                                <p class="mb-0">Title: <span class="fw-semibold">{{data?.title}}</span></p>
+                                <p class="mb-0">Status: <span class="fw-semibold">{{ticketstatus[data?.status]}}</span></p>
+                            </div>
+                            <div class="text-end">
+                                <p class="mb-0">{{moment(data?.createdAt).tz(settingsData?.timeZone).format('lll')}}</p>
+                            </div>
+                            
+                        </div> -->
+                        <!-- <div *ngIf="(ticket | filter:searchText).length == 0" class="text-center">
+                            <p class="text-align ">No Ticket ID Found</p>
+                        </div> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+            <!-- </div>  -->
+            <div class="col-lg-8 position-relative px-0 support-chat">
+                <div class="d-flex align-items-center justify-content-between px-3 py-2 border-bottom">                    
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid" src="https://coinpapa.org/assets/img/coinlivret/avatar.png" width="48" height="48" alt="user img">
+                        <h6 class="fs-16 ms-2 mb-0">Agent</h6>
+                    </div>                    
+                    <div class="content_weight text-end" *ngIf="this.ticket_id">
+                        <h6 class="text-secondary fs-13 mb-0">{{status?.ticket_id}}</h6>
+                        <p class="mb-0 text__ellipsis">{{status?.title}}</p>
+                    </div>
+                </div>
+                <!-- <div class="text-center mt-5" >
+                    <div *ngIf="!ticketID">
+                        <button (click)="openDialog(createTicketDialog)" class="border-0 bg-transparent ">
+                            <img src="https://coinpapa.org/assets/img/coinlivret/tickets.png
+                            " alt="select ticket" class="img-fluid"></button>
+                        <h3 class="mt-2">Create Support Ticket</h3>
+                    </div>
+                </div> -->
+                <div >                    
+                    <div >
+                        <div class="modal-body" #scrollMe style="height: 500px; overflow-y: scroll; scroll-behavior: smooth;" (scroll)="onScroll($event)">
+                            
+                            <div class="msg-body">
+                                <ul *ngFor="let data of userMessage">
+                                    <li *ngIf="data?.type ==2" class="sender">
+                                        <p class="mb-0" >Agent</p>
+                                        <p class="mb-0" *ngIf="data?.message">{{data?.message}} </p>
+                                        <!-- <img *ngIf="data.image_url" [src]="imagePath+data.image_url" class="mt-3 img-fluid"> -->
+                                        <!-- <span class="time mt-2">{{data?.created_at | date:'h:mm a'}}</span> -->
+                                    </li>
+                                    <li *ngIf="data?.type ==1" class="repaly">
+                                        <p class="mb-0" >You</p>
+                                            <p *ngIf="data?.message" class="mb-0">{{data?.message}}</p>
+                                            <!-- <img *ngIf="data.image_url" [src]="imagePath+data.image_url" class="img-fluid mt-2" > -->
+                                            <!-- <div class="see-icon d-flex justify-content-between mt-2">
+                                                <p *ngIf="data.admin_view==0 && data.sender_id==1" class="mb-0 text-white text-end">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="gray"
+                                                        class="bi bi-check" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                                                    </svg>
+                                                </p>
+                                                <p *ngIf="data.admin_view==1 && data.sender_id==1" class="mb-0 text-white text-end">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="green"
+                                                        class="bi bi-check-all" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z" />
+                                                    </svg>
+                                                </p>
+                                                <span class="time mt-2">{{data?.created_at | date:'h:mm a'}}</span>
+                                            </div> -->
+                                          
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="send-box mt-auto" >
+                                <div *ngIf="unReadCount && (unReadCount > 0)" class="position-relative">
+                                    <p  (click)="clear()"><i class="far fa-comment fa-beat" style="color: #684fc4;">
+                                    </i><span class="notify_count position-absolute">{{unReadCount}}</span></p>
+                                </div>
+                                <form #formValue="ngForm">
+                                    <input [maxlength]="500" matInput [disabled]="status?.status" (keyup)="formSubmit($event)" 
+                                    type="text" name="message" [(ngModel)]="forms.message" class="form-control" aria-label="message…" placeholder="Write message...">
+
+                                    <button type="submit" class="btn btn-warning d-flex align-items-center ms-3" [disabled]="status?.status" *ngIf="formSubmitted"   (click)="sendMessages(formValue)">
+                                        <i class="fa fa-paper-plane me-2" aria-hidden="true"></i>Send
+                                    </button>
+                                    <button class="btn btn-warning d-flex align-items-center ms-3" *ngIf="!formSubmitted" disabled type="button">
+                                        <i class="fa fa-paper-plane me-2" aria-hidden="true"></i>Send
+                                    </button>
+                                </form>
+                                <!-- <div *ngIf="!preview">
+                                    <img height="100" *ngIf="previewImg" [src]="previewImg" class="img-fluid mb-2" style="height: 100px;">
+                                </div> -->
+                                <!-- <div class="send-btns" type="button">
+                                    <div class="attach">
+                                        <div class="">
+                                            <a class="button-secondary d-inline-flex align-items-center position-relative mb-2" type="button">
+                                                <mat-icon class="me-1" type="img">backup</mat-icon><span class="">
+                                                Attached file</span>
+                                                <input (change)="uploadImage($event)" type="file" name="upload" id="upload" class="upload-box" placeholder="Upload File" aria-label="Upload File">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                 <!-- <p class="img-condition">(Image format only JPEG & PNG(max:2mb))</p>  -->
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div></div></div>
+
+<ng-template #createTicketDialog>
+    <div id="ticket_create" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">        
+        <div class="modal-content p-4">
+            <div class="mb-2">
+                <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+                    <mat-icon class="close-icon">close</mat-icon>
+                </button>
+                <h5 class="fw-semibold" id="staticBackdropLabel">Create New Ticket </h5>
+            </div>
+            <div>
+                <form [formGroup]="form">
+                    <div>
+                        <label class="col-form-label">Title <span class="invalid-feedback">*</span></label><br>
+                        
+                        <input formControlName="title" type="text"  class="rounded-3 w-100 form-control" maxlength="30"
+                        [ngClass]="{'is-invalid' : submitted && f['title'].errors}"
+                        id="exampleFormControlInput1" required>
+                        <div *ngIf="submitted && f['title']?.errors" class="invalid-feedback">
+                            <div *ngIf="f['title']?.errors?.['required']">Title Required</div>
+                            <div *ngIf="f['title']?.errors?.['minlength']">Title must be 3 character</div>
+                        </div>
+                        
+                    </div>
+                    <div class="mt-3">
+                        <label class="col-form-label" for="exampleFormControlTextarea1">Enter your message</label><span class="invalid-feedback">*</span><br>
+                        
+                        <textarea formControlName="description"  class="rounded-3 w-100 form-control p-2" maxlength="250"
+                        [ngClass]="{'is-invalid' : submitted && f['description'].errors}" (keypress)="check()" id="exampleFormControlTextarea1" required></textarea>
+                        <div *ngIf="submitted && f['description']?.errors" class="invalid-feedback">
+                            <div *ngIf="f['description'].errors?.['required']">Message Required</div>
+                            <div *ngIf="f['description']?.errors?.['minlength']">Message must be 3 character</div>
+                        </div>
+                        
+                    </div>
+                    <button (click)="createTicket()" class="btn button-secondary btn-sm w-100 mt-4" type="submit">Save</button>
+                </form>
+            </div>
+        </div>        
+    </div>
+</ng-template>
+

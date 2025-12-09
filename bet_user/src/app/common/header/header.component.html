@@ -1,0 +1,269 @@
+
+<div class="position-fixed w-100 z-3">
+
+  <nav class="navbar navbar-dark align-items-center " aria-label="Dark offcanvas navbar">
+
+    <div class="container-fluid">
+                  
+
+      <a class="navbar-brand" routerLink="/"><img src="assets/images/logo.png" alt="logo" class="img-fluid logo"></a>
+      <div class="d-flex align-items-center">
+        <!-- <a class="nav-link count-indicator px-0 me-3" id="countDropdown" routerLink="/support-chat" >
+          <i class="fa-solid fa-bell" data-toggle="tooltip" data-placement="bottom" title="Notification" > 
+            <span class="count-size"
+                  *ngIf="(msg_count?.suppoetTicketCount > 0) || (msg_count?.ptoptotalCount > 0)">{{msg_count?.suppoetTicketCount + msg_count?.ptoptotalCount}}</span>
+                </i>
+      </a>          -->
+
+      <!-- <ul class="dropdown-menu shadow border-0 w-m ul_chat-dropdown pt-0" type="button">
+          <li><a class="dropdown-item mb-2" routerLink="/user-support" routerLinkActive="active">
+                  <div class="preview-item-content flex-grow">
+                      <a class="nav-link preview-subject ellipsis font-weight-medium bell-icon py-0">
+                          Support Chat 
+                          <span
+                              class="" style="color: red;"
+                              *ngIf="msg_count?.suppoetTicketCount > 0"> ( {{
+                              msg_count?.suppoetTicketCount }} )</span> -->
+                              <!-- </a> -->
+                  <!-- </div>
+              </a></li> -->
+      <!-- </ul> --> 
+        <a href="" routerLink="/login" class="login_text text-decoration-none me-3" *ngIf="!token" >Login</a>
+        <a  class="login_text text-decoration-none me-3 cursor-pointer" *ngIf="token" (click)="logOut()" >Logout</a>
+        <button *ngIf="token" class="bg-transparent border-0 header-nav-details position-relative" (click)="accountClass()" [class.active]="isActive">
+          <i class="fa-solid fs-3 fa-circle-user"></i>
+          <i class="fa-solid fs-3 fa-circle-xmark"></i>
+        </button>
+        <div class="account-hover " [class.active]="isActive">
+          <ul class="list-unstyled ">
+            <li>
+              <div class="account-bg text-end">
+
+                <p>{{profileDetails?.user_name}}</p>
+                <div class="data-f">
+                  <p class="mb-1">Balance :</p>
+                  <p class="fw-bold">{{profileDetails?.balance | number:'1.0-2'}} INR</p>
+                </div>
+                <div class="data-f">
+                  <p class="mb-1">Liability :</p>
+                  <p class="fw-bold">{{profileDetails?.escrowBalance | number:'1.0-0'}}</p>
+                </div>
+              </div>
+            </li>
+            <div class="mob_overflow">
+              <li>
+                <a (click)="changeNav('acc-statement')"><i class="fa-solid fa-gauge"></i>Account Statement</a>
+              </li>
+              <li>
+                <a (click)="changeNav('my-bets')"><i class="fa-solid fa-hand"></i>My Bets</a>
+              </li>
+              <li>
+                <a (click)="changeNav('betgame-bettinghistory')"><i class="fa-solid fa-gamepad"></i>Profit & Loss History</a>
+              </li>
+              <!-- <li>
+                <a (click)="changeNav('fancy-bets')"><i class="fa-solid fa-money-bill-transfer"></i>Fancy Bets</a>
+              </li>
+              <li>
+                <a (click)="changeNav('exchange-game-bets')"><i class="fa-solid fa-file-invoice"></i>Exchange Game Bets</a>
+              </li>
+              <li>
+                <a (click)="changeNav('casino-bets')"><i class="fa-solid fa-diamond"></i>Casino Bets</a>
+              </li>
+              <li>
+                <a (click)="changeNav('awc-bets')"><i class="fa-solid fa-puzzle-piece"></i>AWC History</a>
+              </li>
+              <li>
+                <a (click)="changeNav('profit-loss')"><i class="fa-solid fa-chart-line"></i>Profit & Loss</a>
+              </li>
+              <li>
+                <a (click)="changeNav('stake')"><i class="fa-solid fa-cubes-stacked"></i>My Stake Button</a>
+              </li> -->
+              <li>
+                <a (click)="onClickChangePassword(changepassword)" ><i class="fa-solid fa-clock-rotate-left"></i>Change Password</a>
+              </li>
+              <li>
+                <a (click)="changeNav('activites')"><i class="fa-solid fa-clock-rotate-left"></i>Activity Logs</a>
+              </li>
+              <li>
+                <a (click)="changeNav('support-chat')"><i class="fa-regular fa-comment"></i>Support Chat</a>
+              </li>
+              <li (click)="logOut()">
+                <a ><i class="fa-solid fa-lock"></i>Logout</a>
+              </li>
+              <li>
+                <div>
+                  <input type="checkbox" class="checkbox d-none" id="checkbox" [checked]="isDarkMode" (change)="onToggleDarkMode($event)">
+                  <label for="checkbox" class="checkbox-label">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                    <span class="ball"></span>
+                  </label>
+                </div>
+              </li>
+            </div>
+          </ul>
+        </div>
+        <button class="navbar-toggler custom-toggler ms-3 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark" aria-controls="offcanvasNavbarDark" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list custom-color" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+          </svg>
+          
+        </button>
+        <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasNavbarDark" aria-labelledby="offcanvasNavbarDarkLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarDarkLabel"></h5>
+            <button type="button" class="btn-close " data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+         
+          <div class="offcanvas-body sports-menu">
+            <form class="d-flex mt-3" role="search">
+              <input class="form-control me-2" 
+                type="search" 
+                placeholder="Search" 
+                aria-label="Search" 
+                [(ngModel)]="searchTerm" 
+                name="searchTerm"
+              >
+              <button class="btn btn-dark" type="submit">Search</button>
+            </form>
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-4">
+              <!-- Loop over each category -->
+              <ng-container *ngFor="let category of leagues">
+                <!-- Display the category only if it has at least one submenu with matches -->
+                <ng-container *ngIf="hasMatches(category)">
+                  <li (click)="toggleMenu(category.name)" 
+                      [ngClass]="{'active': activeMenu === category.name}" 
+                      class="menu-categories">
+                    <i class="fa-solid fa-caret-right me-3"></i>{{ category.name }}
+                    <ul class="list-unstyled ms-2 mt-2" *ngIf="menuState[category.name]">
+                      <!-- Loop over each submenu -->
+                      <ng-container *ngFor="let submenu of category.submenus">
+                        <!-- Display the submenu only if it has at least one match after filtering -->
+                        <ng-container *ngIf="getFilteredMatches(submenu)?.length">
+                          <li (click)="toggleSubMenu(submenu.name, $event)" 
+                              [ngClass]="{'active': activeSubMenu === submenu.name}" 
+                              class="sub-categories-menu mt-3 ms-2">
+                            <i class="fa-solid fa-circle me-3"></i>
+                            {{ submenu.name === 'undefined' ? 'Others' : submenu.name }}
+                            <ul class="list-unstyled ms-4 menu-match-list-grp me-2 mt-3" 
+                                *ngIf="subMenuState[submenu.name]">
+                              <!-- Loop over each filtered match -->
+                              <li *ngFor="let match of getFilteredMatches(submenu)" 
+                                  class="menu-match-list mt-2">
+                                <a class="text-decoration-none" 
+                                   [routerLink]="'/match-details/'+match.sportId+'/'+match.matchId">
+                                  <i class="fa-solid fa-circle me-2" [ngClass]="{
+                                    'text-success': match.inPlay,
+                                    'text-secondary': !match.inPlay
+                                  }"></i>
+                                  {{ match.matchName }}
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                        </ng-container>
+                      </ng-container>
+                    </ul>
+                  </li>
+                </ng-container>
+              </ng-container>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div>
+    <div class="marquee position-relative">
+      <div class="marquee__item">
+        @for (eve of events; track eve.matchId) {
+          <ng-container>
+            <a [routerLink]="'/match-details/'+eve.sportId+'/'+eve.matchId">{{eve.matchName}} {{eve.openDate}}</a>
+            <span class="marquee__seperator"><i class="fa-regular fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span>
+          </ng-container>
+        }
+          
+      </div>
+    </div>
+    
+    
+  </div>
+</div> 
+
+<ng-template #changepassword >
+  <div class="p-3 text-center">
+      <p>Whether you want to change password</p>
+      <h4>Change Password</h4>
+      <form [formGroup]="passwordForm" class="d-flex flex-column gap-4 mt-4"  >
+          <div class="pass">
+              <input *ngIf="isOldPasswordShown" type="text" class="form-control" placeholder="Enter Old Password" formControlName="oldPassword" />
+              <input *ngIf="!isOldPasswordShown" type="password" class="form-control" placeholder="Enter Old Password" formControlName="oldPassword" />
+              <div class="password__show">
+                  <i *ngIf="isOldPasswordShown" alt="show" class="far fa-eye eye-show" (click)="onClickIconOnChangePass('isOldPasswordShown')" ></i>
+                  <i *ngIf="!isOldPasswordShown" alt="hide" class="far fa-eye-slash eye-hide" (click)="onClickIconOnChangePass('isOldPasswordShown')" ></i>
+              </div>
+              <div *ngIf="isPasswordFormSubmitted" class="text-danger text-start">
+                  <span  *ngIf="passwordForm.controls['oldPassword'].hasError('required')">Please provide oldPassword</span>
+                  <span *ngIf="passwordForm.controls['oldPassword'].hasError('minlength')">Password should contain atleast 8 characters</span>
+              </div>
+          </div>
+          <div class="pass">
+              <input *ngIf="isnewPasswordShown" type="text" class="form-control" placeholder="Enter New Password" formControlName="newPassword" />
+              <input *ngIf="!isnewPasswordShown" type="password" class="form-control" placeholder="Enter New Password" formControlName="newPassword" />
+              <div class="password__show">
+                  <i *ngIf="isnewPasswordShown" alt="show" class="far fa-eye eye-show" (click)="onClickIconOnChangePass('isnewPasswordShown')" ></i>
+                  <i *ngIf="!isnewPasswordShown" alt="hide" class="far fa-eye-slash eye-hide" (click)="onClickIconOnChangePass('isnewPasswordShown')" ></i>
+              </div>
+              <div *ngIf="isPasswordFormSubmitted" class="text-danger text-start">
+                  <span  *ngIf="passwordForm.controls['newPassword'].hasError('required')">Please provide newPassword</span>
+                  <span *ngIf="passwordForm.controls['newPassword'].hasError('minlength')">Password should contain atleast 8 characters</span>
+              </div>
+          </div>
+          <div class="pass">
+              <input *ngIf="isCPasswordShown" type="text" class="form-control" placeholder="Enter Confirm Password" formControlName="confirmPassword" />
+              <input *ngIf="!isCPasswordShown" type="password" class="form-control" placeholder="Enter Confirm Password" formControlName="confirmPassword" />
+              <div class="password__show">
+                  <i *ngIf="isCPasswordShown" alt="show" class="far fa-eye eye-show" (click)="onClickIconOnChangePass('isCPasswordShown')" ></i>
+                  <i *ngIf="!isCPasswordShown" alt="hide" class="far fa-eye-slash eye-hide" (click)="onClickIconOnChangePass('isCPasswordShown')" ></i>
+              </div>
+              <div *ngIf="isPasswordFormSubmitted" class="text-danger text-start">
+                  <span  *ngIf="passwordForm.controls['confirmPassword'].hasError('required')">Please provide Confirm Password</span>
+                  <span *ngIf="passwordForm.controls['confirmPassword'].hasError('minlength')">Password should contain atleast 8 characters</span>
+                  <span *ngIf="passwordForm.controls['confirmPassword'].hasError('mustMatch')" class="text-danger">Mismatch password</span>
+              </div>
+          </div>
+          <div class="d-flex justify-content-center align-items-center">
+              <button type="button" class="btn changepassword_btn me-3" (click)="onChangePassword(otpChangeContent)">Change Password</button>
+              <button type="button" class="btn cancel_btn" (click)="onCancel()" >Cancel</button>
+
+          </div>
+      </form>
+  </div>
+</ng-template>
+
+<ng-template #otpChangeContent>
+  <div class="mb-3 mb-sm-0 px-3 py-4">
+      <button mat-icon-button class="border-0 close-button position-absolute end-0 bg-transparent me-2"
+          [mat-dialog-close]="true">
+          <mat-icon class="close-icon">close</mat-icon>
+      </button>
+      <h4 class="text-center mb-4 pt-4 pt-md-0 text-center"><span> Security Check
+              </span> <span class="text_nft d-inline-block position-relative z-0"><img
+                  src="../../../assets/images/home_page/text_back_img.png" alt="BackgroundImage"
+                  class="img-fluid position-absolute bottom-0 end-0 h-100"></span></h4>
+      <div class="mt-3">
+          <input type="text" class="form-control shadow-none" placeholder="Enter OTP here" [formControl]="otp"
+             >
+          <span *ngIf="otpSubmit">
+              <span *ngIf="otp?.errors?.['required']" class="text-danger">OTP is must
+                  </span>
+              <span *ngIf="otp?.errors?.['pattern']" class="text-danger">OTP must be 6 character
+                  </span>
+          </span>
+      </div>
+      <div class="text-center">
+          <button type="Submit" class="btn button-secondary w-100 mt-3" (click)="submitOtpForm()">
+              Change Password</button>
+      </div>
+  </div>
+</ng-template>

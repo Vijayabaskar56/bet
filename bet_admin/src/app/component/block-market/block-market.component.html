@@ -1,0 +1,27 @@
+<section class="py-5">
+    <div class="container">
+        <h2 class="fs-4">Sport Listing</h2>
+        <div class="bg-light p-3 rounded h-100 mt-4 table-responsive">
+            <table class="table table-light table-hover small text-center">
+                <thead class="table-secondary">
+                <tr class="bg-secondary">
+                    <th scope="col">SportId</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Status</th>           
+                </tr>
+                </thead>
+                <tbody>
+                    <tr class="align-middle" *ngFor="let item of controls;">
+                        <td scope="row">{{item?.sportid}}</td>
+                        <td>{{item?.name}}</td>
+                        <td class="text-center">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input shadow-none" type="checkbox" role="switch" id="flexSwitchCheckDefault" (change)="onStatusChange(item, $event)" [checked]="item.status">
+                            </div>
+                        </td>                
+                    </tr>            
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

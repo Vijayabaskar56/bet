@@ -1,0 +1,102 @@
+<section class="sidebar-right-section-padding position-relative page-height ">
+  <div class="upcoming-bar p-2">
+    <p class="mb-0 fw-bold text-center">Sports Bets</p>
+  </div>
+  <div class="m-4">
+    <div class="row align-items-end row-gap-3">
+      <div class="col-sm-6 col-md-3 col-lg-3">
+        <div>
+          <label for="betType">Bet Type</label>
+          <select class="form-select" id="betType" aria-label="Select bet type" [(ngModel)]="selectedBetType">
+            <option value="">Select bet type</option>
+            <option value="1">Match odds</option>
+            <option value="2">Bookmaker</option>
+            <option value="3">Fancy</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3 col-lg-3">
+        <div>
+          <label for="startDate">Period</label>
+          <input
+            id="startDate"
+            type="date"
+            class="form-control"
+            placeholder="Start Date"
+            [(ngModel)]="startDate">
+        </div>
+      </div>
+      
+      <!-- End Date Input -->
+      <div class="col-sm-6 col-md-3 col-lg-3">
+        <div>
+          <label for="endDate">To</label>
+          <input
+            id="endDate"
+            type="date"
+            class="form-control"
+            placeholder="End Date"
+            [(ngModel)]="endDate">
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+        <button class="button-primary border-gradient" (click)="onGetHistory()">Get History</button>
+        <button class="button-primary border-gradient ms-2" (click)="onClearFilters()">Clear</button>
+      </div>
+    </div>
+    <div class="border-top mt-4">
+      <div class="dropdown mt-4">
+        <button class="btn button-secondary btn-sm dropdown-toggle" type="button" (click)="exportcsv()" aria-expanded="false">
+          Download
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">XML</a></li>
+          <li><a class="dropdown-item" href="#">CSV</a></li>
+          <li><a class="dropdown-item" href="#">MS-Excel</a></li>
+        </ul>
+      </div>
+      <div class="mt-4 table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <!-- <th class="text-center">ID</th> -->
+              <th class="text-center">Placed Date</th>
+              <th class="text-center">Market Name</th>
+              <th class="text-center">Event Name</th>
+              <th class="text-center">Match ID</th>
+              <th class="text-center">Type</th>
+              <th class="text-center">Side</th>
+              <th class="text-center">Price</th>
+              <th class="text-center">Size</th>
+              <th class="text-center">Status</th> 
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-center" *ngFor="let bet of betHistory | paginate: { itemsPerPage: limit, currentPage: page, totalItems : totalItems }">
+              <!-- <td class="">8</td> -->
+              <td class="">{{bet?.createdAt | customDate}}</td>
+              <td class="">{{bet?.matchName}}</td>
+              <td class="">{{bet?.eventName}}</td>
+              <td class="">{{bet?.matchId}}</td>
+              <td class="">{{bet?.oddType}}</td>
+              <td class="">{{bet?.side}}</td>
+              <td class="">{{bet?.price}}</td>
+              <td class="">{{bet?.size}}</td>
+              <td class="">{{bet?.status}}</td>
+            </tr>
+            <tr *ngIf="betHistory.length == 0" class="text-center">
+              <td colspan="9">
+                --No Record Found --
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="betHistory.length > 0" class="d-flex justify-content-end">
+          <div class="pagination">
+            <pagination-controls (pageChange)="handlePageEvent($event)"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

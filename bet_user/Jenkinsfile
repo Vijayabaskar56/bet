@@ -1,0 +1,33 @@
+pipeline {
+  agent any
+  tools {nodejs "nodejs18"}
+  stages {
+    stage(demo) {
+      steps{
+        echo 'this is my firest test demo'
+      }
+      
+    }
+    
+    stage(checkout) {
+      steps {
+        git branch: 'main', credentialsId: 'd38877a9-a26c-4515-ac32-ce73e918ab90', url: 'http://192.168.0.40:3000/Client-Projects/bet_user.git'
+      }
+    }
+    stage('Install Dependencies'){
+      steps {
+        sh 'npm install'
+      }
+    }
+    stage('build'){
+      steps{
+        sh 'npm run ng build'
+      }
+    }
+        stage('deploy'){
+      steps{
+    sshPublisher(publishers: [sshPublisherDesc(configName: 'nginx', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: 'betting_user', remoteDirectorySDF: false, removePrefix: 'dist/betting/browser/', sourceFiles: 'dist/betting/browser/**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+      }
+        }
+  }
+}

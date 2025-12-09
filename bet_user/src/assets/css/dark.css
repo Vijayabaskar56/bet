@@ -1,0 +1,227 @@
+:root {
+    --dark-bgcolor: #131414;
+    --primary-text-color: #FFF1D3;
+    --secondary-color: #FFC86D;
+    --teritary-color: #FFDFA5;
+    --dark-bg: #000000;
+    --primarybtn-text: #000;
+    --table-primary-bg-color: #A1D2F4;
+    --table-secondary-bg-color: #F994BA;
+    --primary-font: 'Nunito', sans-serif;
+    --text-color: #666666;
+    --teritary-black: #0c0c0c;
+}
+
+.dark {
+    background-color: var(--dark-bgcolor) !important;
+}
+.dark  label{
+    color: var(--primary-color);
+}
+.dark .history-filter-btn label{color: #000;}
+/* backround color */
+.dark{
+    .side-menu .sub-categories-menu.active,
+    .allside-shadow,
+    .sidebar-bg,
+    .offcanvas, .offcanvas-header,
+    .upcoming-bar,
+    .navbar,
+    .dropdown-menu {
+        background-color: var(--dark-bg) !important;
+        box-shadow: none;
+        --bs-dropdown-link-hover-bg: var(--dark-bgcolor) !important;
+        --bs-dropdown-link-active-bg: var(--dark-bgcolor) !important;
+    }
+
+    .account-hover ul{
+        background-color: var(--dark-bg) !important;
+        border: 1px solid var(--dark-bgcolor) !important;
+    }
+    .side-menu .menu-categories.active,
+    .sidebar-bg li:hover,
+    .sidebar-bg li.active-nav,
+    .upcoming-list p span:nth-child(1),
+    .account-hover li:hover,
+    .section_inplay .accordion-item,
+    .modal-content, .swal2-popup  {
+        background-color: var(--dark-bgcolor) !important;
+    }
+    .account-hover li:last-child:hover,
+    .account-hover li:nth-child(1):hover{
+        background-color: transparent !important;
+    }
+    .offcanvas-header .btn-close{
+        background-color: #fff;
+    }
+
+}
+
+/* icon color */
+.dark{
+    .side-menu .menu-categories,
+    .upcoming-bar p,
+    .upcoming-bg p,
+    .fa-circle-xmark,
+    .fa-circle-user{
+        color: var(--primary-color);
+    }
+
+    .custom-toggler svg{
+        fill: var(--primary-color) !important;
+    }
+}
+
+/* text color */
+.dark{
+
+    .notes p,
+    .history-tab .nav-link.active,
+    .sidebar-bg li.active-nav a,
+    .copy-right p,
+    .footer-link li,
+    .offcanvas li a,
+    .landinghighlights-tab .nav-link.active,
+    .upcoming-list p span:nth-child(1),
+    .account-hover li a,
+    .marquee a{
+        color: var(--primary-text-color) !important;
+    }
+    .history-tab .nav-link,
+    .sidebar-bg li a,
+    .landinghighlights-tab .nav-link,
+    .upcoming-list p a,
+    .login_text,
+    .side-menu li,
+    .modal-content,
+    h2 {
+        color: var(--primary-text-color) !important;
+    }
+    .landinghighlights-tab .nav-link{
+      color: #000 !important;
+    }
+    .section_match_details h6,
+    .section_match_details p,
+    .section_match_details td,
+    .dropdown-item {
+        color: var(--primary-color);
+    }
+
+    .section_match_details table,
+    .section_match_details th,
+    .side-menu .sub-categories-menu.active,
+    .side-menu .menu-categories.active {
+        background-color: var(--dark-bgcolor);
+    }
+    .side-menu .menu-match-list:hover{
+        color: var(--dark-bg) !important;
+    }
+    .side-menu .menu-categories:hover{
+        color: var(--dark-bg)
+    }
+    .menu-categories:hover.active,
+    .section_inplay h2,
+    .section_inplay p {
+        color: var(--primary-text-color)
+    }
+    .offcanvas li a:hover,
+    .side-menu .menu-categories:not(.active):hover {
+        color: var(--dark-bg) !important;
+    }
+    .btn-close {
+        filter: invert(1);
+    }
+
+    .repaly{
+        background-color:var(--text-color) !important;
+    }
+
+    .sender{
+        background-color:var(--teritary-black) !important;
+    }
+
+    .chat-box{
+        background-color: var(--teritary-black) !important;
+    }
+
+}
+
+/* border */
+.dark{
+    .upcoming-bg::before{
+        border-bottom: solid 60px var(--teritary-black) !important;
+    }
+    .copy-right p{
+        border-top: 1px solid rgba(255,255,255,0.1) !important;
+    }
+}
+
+/* table */
+.dark{
+    tr,
+    td,
+    .landinghighlights-tab th{
+        background-color: transparent !important;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    td span{
+        color: var(--text-color) !important;
+    }
+    td:first-child span:last-child{
+        color: #fff;
+    }
+    th{
+        color: var(--primary-color) !important;
+        background-color: transparent !important;
+    }
+    .tb-primary-bg{
+        background-color: var(--table-primary-bg-color) !important;
+    }
+    .tb-primary1-bg{
+        background-color: var(--table-primary1-bg-color) !important;
+    }
+    .tb-primary2-bg{
+        background-color: var(--table-primary2-bg-color) !important;
+    }
+    .tb-secondary-bg{
+        background-color: var(--table-secondary-bg-color) !important;
+    }
+    .tb-secondary1-bg{
+        background-color: var(--table-secondary1-bg-color) !important;
+    }
+    .tb-secondary2-bg{
+        background-color: var(--table-secondary2-bg-color) !important;
+    }
+    td{
+        color: var(--primary-text-color) !important;
+    }
+}
+
+.dark{
+    .sidebar-bg{
+        box-shadow: none !important;
+    }
+    .title_bg{
+        background-color: #444 !important;
+        box-shadow: none !important;
+    }
+    .ngx-pagination a{
+        color: #fff ;
+    }
+
+    .ticket-grp{
+        background-color: #2e2f2f !important;
+    }
+    .material-icons , h5 ,p ,h6,h3 {
+        color: #fff !important;
+    }
+    .support-chat{
+        background-color: var(--dark-bgcolor) ;
+    }
+
+}
+
+.dark #offcanvasNavbarDark .offcanvas-body .navbar-nav li,
+.dark #offcanvasNavbarDark .offcanvas-body .navbar-nav li i{
+    color: #fff;
+}

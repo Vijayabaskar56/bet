@@ -1,0 +1,270 @@
+{
+  "register": {
+    "registersuccess": "Registered successfully!. Otp has been sent to your email, kindly check your mail inbox or spam",
+    "useralreadyexists": "The email is already registered, so kindly check or change it to the new one",
+    "usernameexists": "The username is already taken, so kindly change the name!",
+    "nftnameexists": "Nft name is already taken, so kindly change the name!",
+    "nftnameavailable": "Nft name available",
+    "error": "Error",
+    "exception": "Exception",
+    "missingparameters": "Missing some parameters.",
+    "notpremitted": "You Don't Have the Necessary Permission",
+    "success": "Created Success Fully..!"
+  },
+  "accountverify": {
+    "usernotexists": "User details not found",
+    "accountverifysuccess": "Account created successfully",
+    "invalidotp": "Invalid otp! please give correct ",
+    "alreadyverified": "Account already verified",
+    "otpexpired": "Ouch! otp has expired, and another otp has been sent to your email, kindly verify again!",
+    "otpmissing": "Otp is missing!.",
+    "alreadyExistMail": "This Mail is Already Exists",
+    "requiredMail": "Email is Required"
+  },
+  "resendmailotp": {
+    "mailsendsuccess": "Resend otp is sent to your mail successfully! Please check your mail inbox or spam",
+    "twofamailsendsuccess": "Resend otp mail sent successfully! Please check your mail inbox or spam",
+    "otpsentsuccess": "Otp sent to your mail successfully! Please check your mail inbox/spam",
+    "mailnotsend": "Invalid email address entered. Please check your email and try again.",
+    "withdrawotp": "Otp was sent to your mail successfully! for withdrawing coins, so please check your email inbox or spam.",
+    "incorrectPassword": "Incorrect old password!!!"
+  },
+  "forgotpassword": {
+    "forgototpmailsuccess": "Password reset request received! Check your inbox for the OTP & next steps.",
+    "invalidotp": "Invalid otp! please give the correct otp",
+    "paswordchangesuccess": "The password was changed successfully!",
+    "oldpasswordincorrect": "Incorrect old password",
+    "passwordnotmatch": "Confirm password does not match with new password."
+  },
+  "chagedpassword": {
+    "otpmailsuccess": "Otp sent to your register-mail! kindly check your mail inbox/spam",
+    "invalidotp": "Invalid otp! please give the correct otp",
+    "paswordchangesuccess": "The password was changed successfully!",
+    "passwordnotmatch": "Confirm password does not match with new password",
+    "oldpasswordincorrect": "Incorrect old password."
+  },
+  "login": {
+    "accountnotfound": "The username or password is incorrect. please try again",
+    "wrongpassword": "The username or password is incorrect. please try again",
+    "loginsuccess": "Login successfully!",
+    "verifyyouraccount": "Must verify your account! check your register-mail inbox/spam.",
+    "unauthorizeduser": "Unauthorized user",
+    "suspenduser": "Sorry for the inconvenience. you have been suspended by admin, Please check your mail/inbox",
+    "loginblockeduser": "you have been blocked by admin, please check your mail/inbox and contact our helpdesk for more information",
+    "tokenexpired": "The token has expired, please log in",
+    "adminnotfound": "Admin user not found!",
+    "qrexpired": "Login qr has expired please try again",
+    "qrupdated": "Qr data updated successfully!.",
+    "roleincorrect": "Your Don't have Access to Perform this Operation",
+    "usernomore": "This user is no more exists"
+  },
+  "mailauthentication": {
+    "mailsendsuccessfully": "Mail authentication otp sent to your mail successfully! please check your mail inbox/spam",
+    "invalidotp": "Invalid otp ! please give correct otp",
+    "mailverificatoinsuccess": "Successfully verified your otp",
+    "disablemailsuccess": "Mail authentication disable successfully",
+    "mailstatussuccess": "Mail authentication enabled successfully",
+    "disablemailstatussuccess": "Mail authentication disabled successfully",
+    "mailstatuserror": "Mail status mandatory. kindly check api",
+    "already2tf": "Already 2fa enabled. once disable it and then enable email authentication",
+    "alreadyemail": "Already google authentication enabled. once disable it and then enable email.",
+    "actions": "Unable to Perform This Action  Without Enabling googleauthentication"
+  },
+  "logout": {
+    "message": "Logout successfully."
+  },
+  "profile": {
+    "profilefetchsuccess": "Profile fetched successfully",
+    "profileupdatesuccess": "Profile updated successfully",
+    "profileupdatefailed": "Only allowed these format jpg, png and jpeg.",
+    "profileuploadfailed": "Image Faild to upload",
+    "Username": "Username updated successfully",
+    "email": "Email updated successfully",
+    "image": "Image updated successfully",
+    "profilenotupdated": "Profile update Failed",
+    "profileDeletesuccess": "Profile deleted succesfully",
+    "ColorPreference": "Color preference update Successfully"
+  },
+  "token": {
+    "tokennotfound": "Token not found."
+  },
+  "commonmessage": {
+    "detailsfetchsuccess": "Details fetched successfully",
+    "tryagainlater": "Some error occurred to try again later",
+    "transfermsg": "Amount Transfered succesfully",
+    "norecordsfound": "No records found",
+    "inboxempty": "Your inbox is empty",
+    "statusupdatesuccess": "Status updated successfully",
+    "deleted": "Deleted successfully",
+    "detailsaddsuccess": "Details added successfully",
+    "cmsupload": "Upload successfully",
+    "cmsupdatesuccess": "Details updated successfully",
+    "cmsview": "Detail fetch successfully",
+    "cmsdisable": "Disable your status for view",
+    "upload": "Upload successfully",
+    "delete": " User deleted successfully",
+    "updatesuccess": "Details Updated successfully",
+    "updateUserDetail": "New User Address Updated successfully",
+    "updateFailed": "Unable Action to This Update",
+    "suspendsuccess": "User account suspend successfully",
+    "activesuccess": "User account Activated successfully",
+    "alreadysuspended": "Already have been suspended",
+    "deletesucess": "Details deleted successfully",
+    "mailsendsuccess": "Mail sent successfully",
+    "incorrect": "Kindly enter valid data",
+    "usernamemissing": "Username can't be empty",
+    "emptyspace": "Can't be used whitespace",
+    "contractaddressnotgiven": "Must be given token contract address",
+    "createsuccess": "Create successfully",
+    "wrongpassword": "Invalid otp!",
+    "updateprivacypolicy": "Privacy policy updated successfully",
+    "updatetermsandcondition": "Terms and condition updated successfully",
+    "updateaboutusdetails": "About us details updated successfully",
+    "reason": "Kindly give any reason for rejecting user",
+    "faqdelete": "Faq details deleted successfully",
+    "faqupdate": "Faq details updated successfully",
+    "faqcreate": "Faq details created successfully",
+    "adminwalletnotexist": "Admin wallet address not found",
+    "adminbalance": "Adminwallet is insufficient balance",
+    "mismatchpassword": "Password and confirm password are mismatching!",
+    "imagesuccess": "Image uploaded successfully",
+    "imagenotupload": "Image proof is required",
+    "changeone": "Must be changed anyone",
+    "bonusdeleted": "Bonus details deleted successfully !",
+    "bonusdeletedfalse": "Please try again later!",
+    "editbonustrue": "Bonus details updated successfully !",
+    "nochanges": "No changes given to update!",
+    "addressneed": "Token address needed",
+    "queapprove": " Approved successfully",
+    "valuevalidation": "Block attempt should be greater than attempt value",
+    "requiredfield": "Enter required fields",
+    "nullproperty": "Null status could not update.",
+    "notupdate": "Not update detail",
+    "failedtokencreate": "Faild to create Token",
+    "blockeduser": "This user Block successfully!",
+    "unblockuser": "This user Unblock successfully!",
+    "alreadyblock": "Already is blocked",
+    "alreadyunblock": "Already is unblocked",
+    "categoryedit": "Category Name is updated succesfully !",
+    "categoryeditNot": "Category Name is Not updated !",
+    "notifysendsuccess": "Alert sent successfully",
+    "notifysendfail": "Unable to send alert",
+    "activerror": "Cant disable token has ico data ",
+    "tokennotfoundlp": "Cant pass token",
+    "notification": "Notification status is required",
+    "changesdetected": "No changes detected",
+    "feesupdate": "Fees updated successfully!",
+    "feesRequired": "Fees field is Required",
+    "withdrawtwoFa": "Kindly Enbale 2Fa Authentication",
+    "launchpadnotfound": "Launchpad is not found",
+    "pairsUpdate": "pair is successfully added favorites !",
+    "request": "OTP has been sent to your email, kindly Check Your Mail Inbox/Spam.",
+    "createfailed": "Failed To Created",
+    "UTCtime": "UTC Time Zone Updated Successfully",
+    "success": "Success",
+    "failure": "failure",
+    "incorrectPassword": "Incorrect old password!!!",
+    "casinolocked": "Casino is Locked",
+    "casinoUnlocked": "Casino is UnLocked",
+    "noMessage": "No Messages",
+    "smt": "something went wrong"
+  },
+  "wallet": {
+    "walletcreatesuccess": "Wallet created successfully",
+    "walletdetailsgetsuccess": "Wallet details fetched successfully",
+    "insufficientbalance": "Insufficient balance in your wallet",
+    "walletdetailsnotfound": "Wallet details not found",
+    "authenticationfail": "Kindly check your authentication",
+    "toaddressnotfound": "To address not found",
+    "witdrawrequestsuccess": "Withdraw request sent to admin side successfully",
+    "withdrawsend": "Amount withdrawn successfully!.",
+    "walletnotcreatedsender": "Sender Wallet is not Created,Please Create Sender Wallet",
+    "walletnotcreatedreceiver": "Receiver Wallet is not Created,Please Create Receiver Wallet",
+    "arbitragesubmit": "Arbitrage Bot request created succesfully"
+  },
+  "withdraw": {
+    "withdrawrequestsuccess": "Withdraw request sent successfully!",
+    "withdrawAddressBookAddsuccess": "Added to the Address Book successfully!",
+    "withdrawAddressBookUpdatesuccess": "Updated to the Address Book successfully!",
+    "withdrawAddressBookDeletesuccess": "Deleted to the Address Book successfully!",
+    "withdrawAddressBookListsuccess": "Listed to the Address Book successfully!",
+    "withdrawAddressBookListToken": "Token details not found",
+    "withdrawAddressBookSearchedSuccess": "Searched to the Address Book Successfully!",
+    "withdrawUserResponse": "User not found!",
+    "minlimit": "Your withdraw amount less than min limit ",
+    "maxlimit": "Your withdraw limit is reached",
+    "insufficientbalance": "Insufficient balance in your wallet",
+    "addressvalidateissue": "To address is not valid",
+    "withdrawsuccess": "Withdraw amount sent successfully",
+    "withdrawOtpCheck": "Invalid OTP!",
+    "reasonrequired": "Reason field is required",
+    "withdrawrejected": "Withdraw rejected successfully",
+    "notransactionfound": "No transaction found.",
+    "monthlydaily": "Limit value is mismatched",
+    "withdrawWalletAddressCheck": "Oops! given a wallet address is not found in  your address book!! ",
+    "setvalue": "Please set new value",
+    "withdrawAuthenticatecheck": "kindly enter the google authenticatior!!",
+    "withdrawEmailcheck": "kindly enter the email authenticatior!!",
+    "mustenabletfa": "Please two-factor authentication must be enabled!",
+    "insufficientAdminBal": "Insufficient balance in admin wallet, so please try again later!"
+  },
+  "commissionsettings": {
+    "updatecoin": "Commission settings updated successfully",
+    "addcommissionsuccess": "Commission settings add successfully",
+    "depositupdatecoin": "Deposit settings updated successfully ",
+    "withdrawupdatecoin": "Withdraw settings updated successfully ",
+    "tradeupdatecoin": "Trade commission settings updated successfully ",
+    "commissiontype": "Enter commission type"
+  },
+  "virtualbalanace": {
+    "balanceaddsuccess": "Virtual balance add successfully!",
+    "balancesubfailed": "Oops! failed to reduce virtual balance!"
+  },
+  "virtualbalancereduce": {
+    "balancereducesuccess": "Virtual balance reduced successfully!"
+  },
+  "balanceerror": {
+    "balancenotavail": "Balance not available. kindly check"
+  },
+  "contactus": {
+    "messagesendsuccess": "Message sent successfully"
+  },
+  "adminwallet": {
+    "adminupdatesuccess": "Admin wallet updated successfully",
+    "admincreatesuccess": "Admin wallet created successfully"
+  },
+  "chats": {
+    "messagesuccess": "Message has been sent successfully",
+    "messagenotsend": "Message failed to send",
+    "imagesuccess": "Image uploaded successfully."
+  },
+  "dispute": {
+    "dispute": "Dispute raised successfully",
+    "revert": "Dispute reverted successfully."
+  },
+  "feedback": {
+    "added": "Feedback added successfully",
+    "completeonly": "Trade complete or cancel, then give your feedback",
+    "updateFeedback": "Your feedback is updated successfully",
+    "completefeedback": "Your feedback is already done you just updated."
+  },
+  "banners": {
+    "bannerexist": "Banner already exists!."
+  },
+  "transaction": {
+    "creditedSuccess": "Amount Credited Success Fully",
+    "insufficientbalance": "Insufficient balance in your wallet",
+    "withdrawrequestsuccess": "Withdraw request sent successfully!",
+    "notActive": "User is Not Active, Cannot Transfer Money",
+    "adminonly": "Only admins can add balance.",
+    "addbalns": "Balance added successfully!",
+    "notyouradmin": "This subadmin was not created by you. Please verify the subadmin username."
+  },
+  "betting": {
+    "betPlace": "Bet placed successfully",
+    "insufficient": "Insufficient funds.",
+    "betDeleted": "Bet deleted succesfully",
+    "minandmaxupdated": "Min Price updated Successfully",
+    "controlsupdated": "Controls updated Successfully"
+  }
+}

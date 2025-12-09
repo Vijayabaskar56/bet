@@ -1,0 +1,104 @@
+<section>
+  <div class="container-fluid ">
+    <div class="mt-4 mb-4 ">
+      <div class="col mb-4">
+        <h5>Limit Settings</h5>
+      </div>
+      <!-- <div>
+
+        <form>
+          <div class="d-flex ">
+            <div class="mb-3 me-4 w-100">
+              <label for="exampleInputEmail1" class="form-label">Match Minimum Bet</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3 me-4 w-100">
+              <label for="exampleInputPassword1" class="form-label">Match Maximum Bet</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+          </div>
+          <div class="d-flex ">
+            <div class="mb-3 me-4 w-100">
+              <label for="exampleInputEmail1" class="form-label">Bookmark Minimum Bet</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3 me-4 w-100">
+              <label for="exampleInputPassword1" class="form-label">Bookmark Maximum Bet</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+          </div>
+          <div class="d-flex ">
+            <div class="mb-3 me-4 w-100">
+              <label for="exampleInputEmail1" class="form-label">Fancy Minimum Bet</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3 me-4 w-100">
+              <label for="exampleInputPassword1" class="form-label">Fancy Maximum Bet</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+          </div>
+          <div class="d-flex justify-content-end me-4">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div> -->
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th scope="col">S.No</th>
+            <th scope="col">Title</th>
+            <th scope="col">Minimum Bet</th>
+            <th scope="col">Maximum Bet</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody  >
+          <tr *ngFor="let key of objectKeys(limitsData); let i = index"  >
+            <td>{{i+1}}</td>
+            <td>{{ key | titlecase }}</td>
+            <td>{{limitsData[key]?.minBet}}</td>
+            <td>{{limitsData[key]?.maxBet}}</td>
+            <td>
+              <button class="btn btn-tertiary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="selectLimit(key,limitsData[key].minBet,limitsData[key].maxBet)"  >
+                <i class="fas fa-edit"></i>
+              </button>
+
+
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">{{selectedKey| titlecase }}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="limitForm">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Minimum Bet</label>
+              <input type="text" class="form-control" id="recipient-name" formControlName="minBet">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Maximum Bet</label>
+              <input class="form-control" id="message-text" formControlName="maxBet" >
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateLimitSettings()" >update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>

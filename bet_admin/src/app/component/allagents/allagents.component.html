@@ -1,0 +1,63 @@
+<section class="py-6">
+  <div class=" px-sm-0">
+    <div class="row mt-4">
+      <div class="col-xl-3 col-sm-4">
+          <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                  </svg>
+              </span>
+              <input type="text" class="form-control shadow-none" [formControl]="searchText" placeholder="Find Member" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+      </div>
+      <div class="col-xl-3 col-sm-4">
+          <button class="btn btn-orange" (click)="searchFilter($event)">search</button>
+          <button class="btn btn-orange ms-3" (click)="clear()">clear</button>
+      </div> 
+      <div class="col-xl-6 col-sm-4 text-end">
+        <button class="btn btn-orange py-2" (click)="openDialog(createmaster)" *ngIf="role == 2">Add Agent</button>
+     </div>               
+  </div>
+      <div class="bg-light p-3 rounded m-2 h-100 mt-4 table-responsive">
+          <div class="bg-light p-3 rounded m-2 mt-4">
+            <ag-grid-angular style="height: 300px;" class="w-100"
+            [rowData]="rowData | paginate : {itemsPerPage : page?.itemsPerPage,currentPage:page?.page_no,totalItems:page?.total_page}"
+            [columnDefs]="colDefs"
+            class="ag-theme-quartz"
+            (gridReady)="onGridReady($event)"/>      
+            <div class="pagination justify-content-end"  *ngIf="page?.total_page > page?.itemsPerPage">
+                <pagination-controls
+                    (pageChange)="handlePagination(page.page_no=$event)"></pagination-controls>
+            </div>         
+        </div>
+      </div>
+  </div>
+</section>
+<ng-template #createmaster>
+    <div class="p-4">
+        <button mat-icon-button class="btn text-end w-100">
+            <mat-icon (click)="close()">close</mat-icon>
+          </button>
+        <h4>Add Master</h4>
+                    <form [formGroup]="loginForm" class="pt-3">              
+                      <div class="form-floating mb-4">
+                        <input type="email" class="form-control rounded-pill" formControlName="user_name" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">User Name</label>
+                        <span class="text-error" *ngIf="submitted && f['user_name']?.errors?.['required']">Username is required</span>
+                      </div>
+                      <div class="form-floating mb-4">
+                        <input type="email" class="form-control rounded-pill" formControlName="email" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email Id</label>
+                        <span class="text-error" *ngIf="submitted && f['email']?.errors?.['required']">Email Id is required</span>
+                        <span class="text-error" *ngIf="submitted && f['email']?.errors?.['pattern']">Email Id is incorrect</span>
+                      </div>
+                      <div class="form-floating mb-4">
+                        <input type="password" class="form-control rounded-pill" formControlName="password" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                        <span class="text-error" *ngIf="submitted && f['password']?.errors?.['required']">Password is required</span>
+                      </div>                                
+                      <button class="btn btn-orange w-100 py-2" (click)="submit()">Submit</button>
+                    </form>
+    </div>
+</ng-template>

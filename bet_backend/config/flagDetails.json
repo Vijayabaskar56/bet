@@ -1,0 +1,302 @@
+{
+    "users": {
+        "kyc_verify": {
+            "0": "not submit kyc",
+            "1": "waiting for admin approval",
+            "2": "approve",
+            "3": "reject"
+        }
+    },
+    "admin": {
+        "twofa_status": {
+            "0": "Mail Disable",
+            "1": "Mail Enable"
+        }
+    },
+    "twoFAenablechyeck": {
+        "twofa_status": {
+            "0": "Email Disable status",
+            "1": "Email Enable status"
+        },
+        "tfa_status": {
+            "false": "Google Disable status",
+            "true": "Google Enable status"
+        },
+        "authentic_status": {
+            "false": "2FA All Disabled status",
+            "true": "2FA any one Enable status"
+        }
+    },
+    "isDeleted": {
+        "true": "Not Visible",
+        "false": "Visible"
+    },
+    "support_tickets": {
+        "status": {
+            "0": "running",
+            "1": "complete"
+        },
+        "sender_id": {
+            "1": "user",
+            "2": "admin"
+        }
+    },
+    "cms": {
+        "status": {
+            "0": "show",
+            "1": "disable"
+        }
+    },
+    "cryptotransactions": {
+        "transcation_type": {
+            "1": "deposit",
+            "2": "withdraw",
+            "3": "margin Tade / future Trade"
+        },
+        "status": {
+            "0": "pending",
+            "1": "complete",
+            "2": "reject"
+        },
+        "type_one": {
+            "1": "cross",
+            "2": "isolate"
+        },
+        "type_two": {
+            "1": "cross",
+            "2": "isolate"
+        }
+    },
+    "new_tradepair": {
+        "is_listed": {
+            "0": "not listed",
+            "1": "binance",
+            "2": "wazirx",
+            "3": "bittrex"
+        },
+        "tradebot_status": {
+            "0": "disable",
+            "1": "enable"
+        }
+    },
+    "userbankDetails": {
+        "payment_method": {
+            "1": "bank",
+            "2": "online payment"
+        },
+        "payment_type": {
+            "1": "ptop payment",
+            "2": "crypto payment"
+        }
+    },
+    "fiatdeposit": {
+        "status": {
+            "0": "pending",
+            "1": "approved",
+            "2": "rejected",
+            "3": "fileUploadOnly"
+        }
+    },
+    "fiatwithdraw": {
+        "status": {
+            "0": "pending",
+            "1": "approved",
+            "2": "rejected",
+            "3": "fileUploadOnly"
+        }
+    },
+    "twofa_lost": {
+        "status": {
+            "0": "pending",
+            "1": "approved",
+            "2": "rejected",
+            "3": "fileUploadOnly"
+        }
+    },
+    "advertismentptop": {
+        "trade_type": {
+            "1": "buy",
+            "2": "sell"
+        },
+        "status": {
+            "0": "open",
+            "1": "pending",
+            "2": "complete",
+            "3": "cancel"
+        },
+        "trade_details": {
+            "status": {
+                "0": "open",
+                "1": "waiting for confirmation",
+                "2": "raise dispute",
+                "3": "complete",
+                "4": "cancel"
+            },
+            "dispute_raise_by": {
+                "1": "buy",
+                "2": "sell"
+            }
+        }
+    },
+    "otc": {
+        "admin": {
+            "trade_type": {
+                "1": "limit",
+                "2": "market"
+            }
+        },
+        "user": {
+            "order_type": {
+                "1": "limit",
+                "2": "market"
+            },
+            "status": {
+                "0": "pending",
+                "1": "complete",
+                "2": "reject"
+            }
+        }
+    },
+    "ico": {
+        "admin": {
+            "ico coin": {
+                "1": "active",
+                "2": "inactive",
+                "3": "completed",
+                "4": "experied"
+            },
+            "ico bonus": {
+                "1": "open",
+                "2": "expired"
+            },
+            "pre_sale":{
+                "1":"active",
+                "2":"inactive"
+            }
+        }
+    },
+    "future_pair_details": {
+        "admin": {
+            "future_pair_status": {
+                "0": "inactive",
+                "1": "active"
+            },
+            "type": {
+                "1": "cross",
+                "2": "isolate"
+            },
+            "adminBalanceTransfer":{
+                "1": "mainToFuture",
+                "2": "futureToMain"
+            }
+        },
+        "user":{
+            "status":{
+                "0":"open",
+                "1":"position",
+                "2":"complete",
+                "3":"cancel",
+                "4":"add_on"
+            },
+            "tpsl status":{
+                "0":"inactive",
+                "1":"active"
+            },
+            "trade_type":{
+                "1":"long",
+                "2":"short"
+            },
+            "order_type":{
+                "1":"limit"
+            }
+        }
+    },
+    "margin": {
+        "cooling_off_period": {
+            "borrow_status": {
+                "disable": "true",
+                "enable": "false"
+            }
+        }
+    },
+    "margin_pair_details": {
+        "admin": {
+            "margin_pair_status": {
+                "0": "inactive",
+                "1": "active"
+            },
+            "type": {
+                "1": "cross margin",
+                "2": "isolate margin"
+            }
+        },
+        "user": {
+            "trade_type": {
+                "1": "buy",
+                "2": "sell"
+            },
+            "order_type": {
+                "1": "limit"
+            },
+            "transfer_account": {
+                "account_type": {
+                    "1": "main",
+                    "2": "margin",
+                    "3": "future"
+                }
+            }
+        }
+    },
+    "wallet setting": {
+        "admin": {
+            "account type": {
+                "1": "spot",
+                "2": "margin cross",
+                "3": "margin isolate",
+                "4": "future cross",
+                "5": "future isolate"
+            }
+        }
+    },
+    "dex": {
+        "admin": {
+            "token": {
+                "status": {
+                    "1": "active",
+                    "2": "inactive"
+                }
+            },
+            "pair": {
+                "status": {
+                    "1": "active",
+                    "2": "inactive"
+                }
+            }
+        },
+        "user": {
+            "exchange type": {
+                "type": {
+                    "1": "swap",
+                    "2": "faucet"
+                }
+            }
+        }
+    },
+    "faq":{
+        "status":{
+            "1":"active",
+            "2":"inactive"
+        },
+        "type":{
+            "1":"General",
+            "2":"ico"
+        },
+        "category":{
+            "1":"General",
+            "2":"Pre-ico",
+            "3":"Tokens",
+            "4":"Client",
+            "5":"Legal"
+        }
+    }
+}
