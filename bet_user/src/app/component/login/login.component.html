@@ -1,23 +1,29 @@
-<app-header/>
+<!-- <app-header/> -->
 <section class="section-padding login_bg">
     <div class="container">
         <div class="col-md-5 col-lg-4 mx-auto">
-            <div class="login_form bg-dark shadow p-3 p-md-4 rounded">
-                <a href="" routerLink="/login">
-                    <img src="assets/images/logo.png" alt="Binarge" class="img-fluid">
-                </a>
-                <form action="" class="d-flex flex-column gap-4 mt-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
-                    <div>
-                        <label class="mb-2 text-light">Username</label>
+            <div  class="text-center">
+                <h1 class="text-white fw-semibold">Your Logo</h1>
+            </div>
+               
+            <div class="login_form bg-white  shadow p-3 p-md-4 rounded">
+                <div class="text-center">   
+                    <h4 class="fw-bold">login</h4>
+                </div>
+                <form action="" class=" mt-4" [formGroup]="loginForm"  >
+                    <div class="py-3">
+                        <label class="mb-2 text-dark">Username</label>
                         <input type="text" class="form-control" placeholder="Enter your username" formControlName="email" >
                         <div *ngIf="isSubmitted" class="text-danger">
                             <span  *ngIf="loginForm.controls['email'].hasError('required')">Please provide email (or) User Name
                             </span>
                         </div>
                     </div>
+                    <div class="py-3">
 
-                    <label class="mb-2 text-light">Password</label>
-                    <div class="pass mb-2">
+                    
+                    <label class=" text-dark">Password</label>
+                    <div class="pass ">
 
                         <span class="d-block position-relative">
                             <input *ngIf="!isLoginPasswordShown" placeholder="Enter your password" type="password" class="form-control" formControlName="password" (keydown)="keyPressNumbers($event)">
@@ -32,13 +38,14 @@
                             <span *ngIf="loginForm.controls['password'].hasError('minlength')">Password should contain atleast 8 characters</span>
                         </div>
                     </div>
-                    <button class="btn button-secondary w-100 mb-3"   >Login</button>
+                    </div>
+                    <button class="btn button-secondary w-100 my-3" routerLink="../home"   >Login</button>
                 </form>
             </div>
         </div>
     </div>
 </section>
-<app-footer/>
+<!-- <app-footer/> -->
 
 <ng-template #changepassword >
     <div class="p-3 text-center">

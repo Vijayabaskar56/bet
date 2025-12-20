@@ -1,0 +1,46 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-bets',
+  templateUrl: './bets.component.html',
+  styleUrl: './bets.component.scss'
+})
+export class BetsComponent {
+
+  betContents: any[] = [
+    { name: 'Ashes 2025-2026/21/11/2025', positive: true, live: true, f: true, bm: 'BM', game: true, value1: '-', value2: '-', value3: '1.5', value4: '2.1', value5: '1.1', value6: '-' },
+
+    { name: 'IND vs SA T20-5th/2025/12/19/2025', positive: true, live: false, f: true, bm: 'BM', game: true, value1: '1.75', value2: '2.05', value3: '1.45', value4: '2.30', value5: '1.15', value6: '3.20' },
+    { name: 'IND vs SA T20-3rd/2025/12/14/2025', positive: true, live: false, f: true, bm: 'BM', game: true, value1: '-', value2: '2.10', value3: '1.60', value4: '1.85', value5: '-', value6: '2.75' },
+    { name: 'IND vs SA T20-1st/2025/12/09/2025', positive: true, live: true, f: true, bm: 'BM', game: true, value1: '1.90', value2: '-', value3: '1.35', value4: '2.40', value5: '1.20', value6: '-' },
+    { name: 'IND-W vs SA-W WC Final/2025/11/02/2025', positive: true, live: false, f: true, bm: 'BM', game: true, value1: '1.55', value2: '2.15', value3: '-', value4: '1.10', value5: '2.35', value6: '3.00' },
+    { name: 'AUS-W vs IND-W WC SF/2025/10/30/2025', positive: true, live: false, f: true, bm: 'BM', game: true, value1: '2.05', value2: '1.70', value3: '1.50', value4: '2.25', value5: '1.25', value6: '2.90' },
+    { name: 'ENG-W vs IND-W WC/2025/10/25/2025', positive: true, live: true, f: true, bm: 'BM', game: true, value1: '-', value2: '2.25', value3: '1.65', value4: '1.95', value5: '1.30', value6: '-' },
+    { name: 'IND vs SA T20-4th/2025/12/17/2025', positive: true, live: false, f: true, bm: 'BM', game: true, value1: '1.85', value2: '1.95', value3: '1.40', value4: '-', value5: '2.50', value6: '2.65' },
+    { name: 'NZ-W vs SA-W WC/2025/10/20/2025', positive: true, live: false, f: true, bm: 'BM', game: true, value1: '2.20', value2: '-', value3: '2.00', value4: '1.80', value5: '1.40', value6: '3.10' },
+    { name: 'IND vs SA T20-2nd/2025/12/12/2025', positive: true, live: true, f: true, bm: 'BM', game: true, value1: '1.65', value2: '2.30', value3: '-', value4: '2.10', value5: '1.18', value6: '2.80' },
+    { name: 'IND-W vs ENG-W WC Group/2025/10/15/2025', positive: true, live: false, f: true, bm: 'BM', game: true, value1: '1.70', value2: '2.00', value3: '1.55', value4: '2.20', value5: '-', value6: '2.95' }
+
+
+  ]
+   sportsItems: any[] = [
+    { name: 'football' },
+    { name: 'tennis' },
+    { name: 'Esoccer' },
+    { name: 'lottery' },
+    { name: 'Horse Racing' },
+    { name: 'GreyHond Racing' },
+    { name: 'Basketball' },
+    { name: 'baccard' },
+    { name: 'Wrestling' },
+    { name: 'Volleyball' },
+    { name: 'Badminton' },
+    { name: 'Handball' },
+    { name: 'Handball' },
+    { name: 'Handball' },
+    { name: 'Handball' },
+    { name: 'teenapati' }
+
+  ]
+
+}
