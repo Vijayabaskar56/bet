@@ -50,4 +50,4 @@ coverage
 .cache
 tmp
 temp
-/apps/bet_backend
+# /apps/bet_backend

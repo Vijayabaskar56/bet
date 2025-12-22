@@ -1,0 +1,40 @@
+enum MarketType {
+  MATCH_ODDS
+  BOOKMAKER_ODDS
+  FANCY_ODDS
+}
+
+enum BetType {
+  BACK
+  LAY
+}
+
+enum BetStatus {
+  PENDING
+  MATCHED
+  SETTLED
+  CANCELED
+  REFUNDED
+}
+
+enum TradeStatus {
+  MATCHED
+  SETTLED
+  CANCELED
+}
+
+enum TransactionType {
+  DEPOSIT
+  WITHDRAWAL
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+enum LoginStatus {
+  ACTIVE
+  INACTIVE
+}

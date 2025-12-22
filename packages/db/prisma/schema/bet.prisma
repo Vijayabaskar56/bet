@@ -1,0 +1,21 @@
+model Bet {
+  id             String     @id @default(auto()) @map("_id") @db.ObjectId
+  userId         String     @db.ObjectId
+  marketId       String
+  marketType     MarketType
+  matchId        String
+  selectionId    String
+  type           BetType
+  odds           Float
+  stake          Float
+  initialStake   Float
+  liability      Float?
+  eventName      String
+  selectionName  String
+  status         BetStatus  @default(PENDING)
+  matchedTradeId String?    @db.ObjectId
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  @@map("bets")
+}

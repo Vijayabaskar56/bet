@@ -1,0 +1,125 @@
+model User {
+  id                           String              @id @default(auto()) @map("_id") @db.ObjectId
+  user_name                    String?
+  country_code                 String?
+  phone_no                     Float?
+  password                     String?
+  dob                          String?
+  email                        String?
+  status                       Int                 @default(1)
+  country                      String              @default("")
+  profile_img                  String?
+  email_otp                    String?
+  temp_otp                     String?
+  new_email_otp                String?
+  twofaEmailOtp                Int                 @default(0)
+  access_key                   Boolean             @default(false)
+  apiAccessOtp                 Int                 @default(1) // Mongoose had true, but type was Number. Assuming 1.
+  temp_token                   Json? // Array in Mongoose
+  profile_otp                  String              @default("0")
+  app_finger_status            String              @default("0")
+  app_face_status              String              @default("0")
+  reason                       String              @default("")
+  type                         String              @default("")
+  parent_id                    String              @default("")
+  mobile_number                Float?              @default(0)
+  modifiedAt                   DateTime            @default(now())
+  createdAt                    DateTime            @default(now())
+  issuspend                    Boolean             @default(false)
+  address                      String              @default("")
+  city                         String              @default("")
+  role                         Int?
+  is_logged                    String              @default("0")
+  ipaddr                       String              @default("0")
+  location                     String              @default("0")
+  verifytoken                  String              @default("")
+  device_type                  String              @default("")
+  remember_token               String              @default("")
+  profileimage                 String?
+  deletedAt                    DateTime?
+  authToken                    String?
+  lastSeen                     String?
+  ref_code                     String?
+  ref_by                       String?
+  socket_id                    String?
+  user_engagement_month_report Boolean             @default(true)
+  isBlocked                    Boolean             @default(false)
+  updatedBy                    String?
+  createdBy                    String?             @db.ObjectId
+  ReferralChilds               String[]            @db.ObjectId
+  notificationStatus           NotificationStatus?
+  unique_id                    String              @default("")
+  balance                      Float               @default(0)
+  availableBalance             Float               @default(0)
+  escrowBalance                Float               @default(0)
+  casino_block                 Boolean             @default(true)
+  isDeleted                    Boolean             @default(false)
+  isLoginFirstTime             Int                 @default(1)
+  browser                      String?
+  os                           String?
+  version                      String?
+  favCoin                      Json? // Array in Mongoose
+  deposit_amt                  Float?
+  withdraw_amt                 Float?
+  isPasswordUpdatedByUpline    Boolean?
+  sportsList                   UserSportsList[]
+  updatedAt                    DateTime            @updatedAt
+
+  @@map("users")
+}
+
+type NotificationStatus {
+  ptop        Int @default(1)
+  supportChat Int @default(1)
+}
+
+type UserSportsList {
+  game   String?
+  status Boolean?
+}
+
+model UserLogin {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  user_id   String?
+  ipaddress String?
+  city      String?
+  country   String?
+  status    Boolean?
+  type      String?
+  browser   String?
+  os        String?
+  createdAt DateTime @default(now())
+
+  @@map("user_logins")
+}
+
+model IpTracker {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  ip        String?
+  time      Json? // Array in Mongoose
+  block     Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("iptrackers")
+}
+
+model TransactionHistory {
+  id                String           @id @default(auto()) @map("_id") @db.ObjectId
+  sender_id         String?
+  sender_name       String?
+  sender_role       Int?
+  receiver_role     Int?
+  amount            Float?
+  receiver_id       String?
+  receiver_name     String?
+  type              TransactionType?
+  remaining_balance Float?
+  from_to           Int?
+  remarks           String?
+  user_id           String?          @db.ObjectId
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  @@map("transaction_histories")
+}

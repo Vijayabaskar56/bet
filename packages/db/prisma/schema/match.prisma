@@ -1,0 +1,30 @@
+model Match {
+  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
+  matchName          String
+  runners            Json? // mongoose.Schema.Types.Mixed
+  sportId            Int
+  matchId            Int
+  marketId           String
+  bookmakerMarketId  String    @default("")
+  matchRunners       Json? // mongoose.Schema.Types.Mixed
+  bookmakerRunners   Json? // mongoose.Schema.Types.Mixed
+  fancyRunners       Json? // mongoose.Schema.Types.Mixed
+  settledMarkets     String[]  @default([])
+  openDate           DateTime  @default(now())
+  league             String?
+  inPlay             Boolean
+  isCompleted        Boolean   @default(false)
+  isBookMakerSettled Boolean   @default(false)
+  maxBet             Float     @default(0)
+  minBet             Float     @default(0)
+  maxBetRate         Float     @default(0)
+  minBetRate         Float     @default(0)
+  scoreUrl           String
+  bmOdds             Boolean   @default(false)
+  fOdds              Boolean   @default(false)
+  lastActive         DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  @@map("matches")
+}

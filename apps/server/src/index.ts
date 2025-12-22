@@ -6,10 +6,13 @@ import { OpenAPIReferencePlugin } from "@orpc/openapi/plugins";
 import { onError } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/fetch";
 import { ZodToJsonSchemaConverter } from "@orpc/zod/zod4";
+import { LoggingHandlerPlugin } from "@orpc/experimental-pino";
+import { logger } from "@betting/utils";
 import "dotenv/config";
 import { Elysia } from "elysia";
 
 const rpcHandler = new RPCHandler(appRouter, {
+  plugins: [new LoggingHandlerPlugin({ logger })],
   interceptors: [
     onError((error) => {
       console.error(error);
@@ -18,6 +21,7 @@ const rpcHandler = new RPCHandler(appRouter, {
 });
 const apiHandler = new OpenAPIHandler(appRouter, {
   plugins: [
+    new LoggingHandlerPlugin({ logger }),
     new OpenAPIReferencePlugin({
       schemaConverters: [new ZodToJsonSchemaConverter()],
     }),
@@ -29,7 +33,7 @@ const apiHandler = new OpenAPIHandler(appRouter, {
   ],
 });
 
-const app = new Elysia()
+new Elysia()
   .use(
     cors({
       origin: process.env.CORS_ORIGIN || "",

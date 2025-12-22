@@ -1,0 +1,21 @@
+model Trade {
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  matchId       String
+  marketId      String
+  marketType    MarketType  @default(MATCH_ODDS)
+  selectionId   String
+  winner        String?
+  eventName     String
+  selectionName String
+  backUserId    String?     @db.ObjectId
+  layUserId     String?     @db.ObjectId
+  odds          Float
+  stake         Float
+  liability     Float
+  status        TradeStatus @default(MATCHED)
+  pnl           Float       @default(0)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@map("trades")
+}

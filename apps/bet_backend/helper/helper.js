@@ -1,0 +1,313 @@
+import nodemailer from 'nodemailer';
+// import Binance from 'node-binance-api'
+// const OKX = require('okx-api');
+// import  responsejson from '../config/responsejson.json'
+// es-lint ignore
+import { Parser } from 'json2csv'
+import XLSX from 'xlsx'
+import PDFDocument from 'pdfkit'
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const responsejson = require('../config/responsejson.json');
+
+
+import path from 'path';
+import Redis from 'ioredis';
+import hbs from 'nodemailer-express-handlebars';
+import jsonata from 'jsonata';
+import { user, userActivities } from '../model/userModel.js';
+import { admin } from '../model/adminModel.js';
+import { DeleteObjectCommand, S3 } from '@aws-sdk/client-s3';
+import contextService from "request-context";
+import translate from "translate";
+import mongoose from 'mongoose';
+
+// const jsonata = require('jsonata')
+// const { user, userActivities, cryptoTransaction } = require('../model/userModel')
+// const { newCyrptocurrencies } = require('../model/newCryptocurrencies')
+// const { cryptoCurrencies, Commissions, TradePairs, MarketDatas } = require('../model/coinSettingModel')
+// const { newTradePair } = require('../model/newTradePairModel')
+// const { stat } = require('fs');
+// const { DeleteObjectCommand } = require("@aws-sdk/client-s3");
+// const { s3 } = require("../middleware/multer.js");
+
+// const axios = require('axios')
+// const TronWeb = require('tronweb');
+// const Web3 = require('web3');
+// const { adminWallet, siteSetting, admin } = require('../model/adminModel');
+// const { contractPair } = require('../model/futureContract')
+// const mongoose = require('mongoose')
+// const ObjectId = mongoose.Types.ObjectId;
+// const serverio = require('../index')
+// const { futureBuySell } = require('../model/buysellFutureTradeModel');
+// const { marginTradePair } = require("../model/marginTradePairsModel")
+// const CoinKey = require('coinkey');
+// const bitcoin = require('bitcoinjs-lib');
+// const validator = require('multicoin-address-validator')
+// const io = require('socket.io-client')
+// const kytHelper = require('./sumsubHelper')
+// let socket = io.connect(process.env.SOCKETCLIENT);
+// const ccxt = require('ccxt');
+// const { newWallet } = require('../model/newWalletModel');
+// const {liquidityProviders} = require('../model/arbitrageModel.js')
+// const tradeTypeLimit = 'limit'
+// const tradeTypeMarket = 'market'
+// const buyStoplimit = 'buyStopLimit'
+// const sellStoplimit = 'sellStopLimit'
+// const buyStopMarket = 'buyStopMarket'
+// const sellStopMarket = 'sellStopMarket'
+// (async ()=>{
+//     // emailCountSetRedis()
+// })();
+class helper {
+
+    // static uploadImage = async (req) => {
+    //     const form = formidable();
+    //     // var date = new Date().toISOString()
+    //     form.parse(req, async (_err, _fields, _file) => {
+    //         // let filename = date + (path.extname(files.kyc.originalFilename));
+    //         //     // if (!files.kyc) {
+    //         //     //     res.status(400).send("No file uploaded");
+    //         //     //     return;
+    //         //     // }
+    //         //     // try {
+    //         //     //     return s3.putObject({
+    //         //     //         Bucket: 'firebee',
+    //         //     //         Key: filename,
+    //         //     //         Body: fs.createReadStream(files.kyc.filepath),
+    //         //     //         ACL: 'public-read'
+    //         //     //     }, async () => res.status(200).send({ message: "File Uploaded", url: filename }))
+    //         //     // } catch (err) {
+    //         //     //     res.status(500).send(err)
+    //         //     // }
+    //     })
+
+    // }
+    static redisClient = new Redis(`${process.env.REDIS_URL}`);
+
+
+    static sendMail = async (params) => {
+
+        // eslint-disable-next-line no-async-promise-executor
+        return new Promise(async (resolve) => {
+            const transporter = nodemailer.createTransport({
+                host: 'sg1-ts103.a2hosting.com',
+                port: 465,
+                auth: {
+                    user: process.env.MAIL,
+                    pass: process.env.PASS
+                },
+                tls: {
+                    // do not fail on invalid certs
+                    rejectUnauthorized: false
+                },
+            });
+
+            const handlebarsOptions = {
+                viewEngine: {
+                    extName: ".handlebars",
+                    partialsDir: path.resolve('./views'),
+                    defaultLayout: false,
+                },
+                viewPath: path.resolve('./views'),
+                extName: ".handlebars",
+            }
+            transporter.use('compile', hbs(handlebarsOptions))
+
+            let info = {
+                from: '"Betting" <Betting@betting.com>', // sender address
+                to: params.email,
+                subject: params.subject, // Subject line
+                template: params.template,
+                context: { params },
+            };
+            if (params.cc) {
+                info.cc = params.cc
+            }
+            function mailSend() {
+                transporter.sendMail(info, async (err,) => {
+                    let responseData
+                    if (!err) {
+                        responseData = {
+                            status: true,
+                            message: 'commonmessage.mailsendsuccess'
+                        }
+                        resolve(responseData)
+                    }
+                    else {
+                        responseData = {
+                            status: false,
+                            message: err.message
+                        }
+                        resolve(responseData)
+                    }
+                })
+            }
+            let obj = {
+                from: info.from,
+                to: info.to,
+                subject: info.subject,
+                sendingTime: new Date().toLocaleDateString() + "_" + new Date().toLocaleTimeString()
+            }
+            let redisData = JSON.parse(await helper.redisClient.get('NodeMail'))
+            if (redisData) {
+                let data = {}
+                let currentDate = new Date().toLocaleDateString()
+                if (redisData.date == currentDate) {
+
+                    if (redisData.mailCount && (Number(redisData.mailCount) + 1) <= 1500) {
+                        redisData.details.push(obj)
+                        data = { date: redisData.date, mailCount: Number(redisData.mailCount) + 1, startTime: redisData.startTime, details: redisData.details }
+                        helper.redisClient.set('NodeMail', JSON.stringify(data))
+                        return mailSend()
+                    } else {
+
+                        var responseData = {
+                            status: false,
+                            message: "Today MailSend Limit Reached"
+                        }
+                        resolve(responseData)
+                    }
+                } else if (redisData.date != currentDate) {
+
+                    data = { date: currentDate, mailCount: 1, startTime: new Date().toLocaleTimeString(), details: [obj] }
+                    helper.redisClient.set('NodeMail', JSON.stringify(data))
+                    mailSend()
+                }
+            } else {
+                let arr = [obj]
+                let data = { date: new Date().toLocaleDateString(), mailCount: 1, time: new Date().toLocaleTimeString(), details: arr }
+                helper.redisClient.set('NodeMail', JSON.stringify(data))
+                mailSend()
+            }
+        })
+
+
+
+
+    }
+
+    // static jsonresponse = async (status, message, data, lang = null) => {
+    //     // const contextService = require('request-context');
+
+
+    //     const userLang = contextService.get('request:lang') || lang;
+    //     let msg = message, success = status;
+    //     if (success !== null) {
+    //         try {
+    //             let expression = jsonata(`$single(${message})`)
+    //             msg = await expression.evaluate(responsejson)
+    //             if (!msg) msg = message
+    //         } catch (error) {
+    //             // console.log(error)
+    //         }
+    //     }
+    //     else {
+    //         success = false;
+    //     }
+
+    //     let translation = await this.makeTranslate(msg, userLang)
+    //     return {
+    //         success,
+    //         message: translation,
+    //         data: data,
+    //     }
+    // }
+
+    // static makeTranslate = async (message, lang) => {
+    //     try {
+    //         let translation = await translate(message, lang || 'en')
+    //         return translation;
+    //     } catch (error) {
+    //         return error.message;
+    //     }
+    // }
+
+
+    static unLinkExistImage = async (key) => {
+        const bucketParams = { Bucket: "firebee", Key: key };
+        const data = await S3.send(new DeleteObjectCommand(bucketParams));
+        if (data) {
+            console.log("Exist image deleted successfully!");
+            return data;
+        } else {
+            console.log("Oops! Failed to delete Exist image..!");
+            return "Unlink failed";
+        }
+    }
+
+    // static getUserRole = (role_no) => {
+    //     const role = {
+    //         1: 'Admin',
+    //         2: 'Sub Admin',
+    //         3: 'Master',
+    //         4: 'Agent',
+    //         5: 'User'
+    //     }
+    //     return role[role_no];
+    // }
+    // static getMongoType = (id) => {
+    //     return mongoose.Types.ObjectId.createFromHexString(id)
+    // }
+
+    static convertToCSV(data,) {
+        try {
+            const parser = new Parser();
+            const date = new Date().toISOString()
+            const csv = parser.parse(data);
+            console.log(`Data has been written to ${date}`);
+            return csv
+        } catch (err) {
+            console.error('Error converting to CSV:', err);
+        }
+    }
+
+    static convertToExcel(data) {
+        try {
+            const date = new Date().toISOString()
+            const wb = XLSX.utils.book_new();
+            const ws = XLSX.utils.json_to_sheet(data);
+            const excelBuffer = XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+            console.log(`Data has been written to ${date}`);
+            return excelBuffer
+        } catch (err) {
+            console.error('Error converting to Excel:', err);
+        }
+    }
+
+    static convertToPDF(data) {
+        return new Promise((resolve) => {
+            const doc = new PDFDocument();
+            let buffers = [];
+
+            doc.on('data', buffers.push.bind(buffers));
+            doc.on('end', () => {
+                const pdfBuffer = Buffer.concat(buffers);
+                resolve(pdfBuffer);
+            });
+
+            doc.fontSize(25).text('This is a PDF content', 100, 100);
+
+            if (data && Array.isArray(data)) {
+                data.forEach((item, index) => {
+                    doc.fontSize(12).text(`${index + 1}: ${item}`, 100, 150 + index * 20);
+                });
+            }
+
+            doc.end();
+        });
+    }
+
+
+    static async downloadRecord(type, data) {
+        if (type === 'pdf') {
+            return await this.convertToPDF(data)
+        } else if (type === 'xlsx') {
+            return await this.convertToExcel(data)
+        } else if (type === 'csv') {
+            return await this.convertToCSV(data)
+        } throw new Error('Unsupported file type');
+    }
+}
+export { helper }
