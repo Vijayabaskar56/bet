@@ -1,0 +1,28 @@
+{
+  "name": "@betting/api",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@orpc/server": "catalog:",
+    "@orpc/client": "^1.12.2",
+    "@orpc/openapi": "catalog:",
+    "@orpc/zod": "catalog:",
+    "elysia": "catalog:",
+    "@prisma/client": "^7.1.0",
+    "dotenv": "catalog:",
+    "zod": "catalog:",
+    "@betting/db": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "catalog:",
+    "@betting/config": "workspace:*"
+  }
+}
