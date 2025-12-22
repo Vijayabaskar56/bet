@@ -4,8 +4,8 @@ let transporter = nodemailer.createTransport({
         host: 'sg1-ts103.a2hosting.com',
         port: 465,
         auth: {
-                user: 'thisismail@firebeefiling.com',
-                pass: 'K1oLNszqVb124'
+                user: '',
+                pass: ''
         },
 });
 export const sendMail = (to) => {

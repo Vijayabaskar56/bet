@@ -11,8 +11,8 @@ let imgLimit;
     imgLimit = result?.image_lmt
 })();
 dotenv.config();
-const secret_key = "oG7/LqM3XFmLs4KagbKcUjmDjTivBGbDpL2Wf3B3UEo";
-const accessId = "DO00FXVVQZJMZR8CUWDF";
+const secret_key = "";
+const accessId = "";
 const region = "sgp1";
 const endpoint = "https://sgp1.digitaloceanspaces.com/";
 const bucket_name = 'firebee';
@@ -29,7 +29,7 @@ const s3 = new S3Client({
 
 
 const fileFilters = (req, file, cb, next) => {
-    if (file.mimetype == 'image/gif' || file.mimetype == 'audio/mpeg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpg' || file.mimetype == 'image/jpeg' || file.mimetype == 'application/octet-stream' || file.mimetype == 'video/mp4' || file.mimetype == 'video/MPEG-4' || file.mimetype == 'video/mkv' || file.mimetype === 'video/3gpp') {
+    if (file.mimetype === 'image/gif' || file.mimetype === 'audio/mpeg' || file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype == 'image/jpeg' || file.mimetype == 'application/octet-stream' || file.mimetype == 'video/mp4' || file.mimetype == 'video/MPEG-4' || file.mimetype == 'video/mkv' || file.mimetype === 'video/3gpp') {
         cb(null, true)
         next
     } else {
