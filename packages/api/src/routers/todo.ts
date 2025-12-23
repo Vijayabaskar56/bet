@@ -2,7 +2,6 @@ import prisma from "@betting/db";
 import z from "zod";
 
 import { publicProcedure } from "../index";
-
 export const todoRouter = {
   getAll: publicProcedure.handler(async () => {
     return await prisma.todo.findMany({

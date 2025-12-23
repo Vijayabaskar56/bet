@@ -16,30 +16,32 @@ import { ActivitylogsComponent } from './component/activitylogs/activitylogs.com
 import { InplayMatchesComponent } from './component/inplay-matches/inplay-matches.component';
 import { AwcListComponent } from './component/awc-list/awc-list.component';
 import { LoginComponent } from './component/login/login.component';
-import {authGuard , checkGuard} from './auth/auth.guard'
+import { authGuard, checkGuard } from './auth/auth.guard'
 import { SupportChatComponent } from './component/support-chat/support-chat.component';
+import { TodoListComponent } from './component/todo/todo-list.component';
 
 const routes: Routes = [
-  {path:'', redirectTo:"/login", pathMatch:'full'},
-  { path: 'match-details/:sportId/:matchId', component: MatchDetailsComponent , canActivate:[authGuard] },
-  { path: 'in-play', component: InplayMatchesComponent, canActivate:[authGuard]},
-  { path: 'awc-list', component: AwcListComponent},
-  { path: 'login', component: LoginComponent , canActivate:[checkGuard] },
+  { path: '', redirectTo: "/login", pathMatch: 'full' },
+  { path: 'match-details/:sportId/:matchId', component: MatchDetailsComponent, canActivate: [authGuard] },
+  { path: 'in-play', component: InplayMatchesComponent, canActivate: [authGuard] },
+  { path: 'todo-list', component: TodoListComponent },
+  { path: 'awc-list', component: AwcListComponent },
+  { path: 'login', component: LoginComponent, canActivate: [checkGuard] },
   {
     path: '', component: LayoutComponent, children: [
-      { path: 'landing', component: LandingComponent , canActivate:[authGuard]  },
+      { path: 'landing', component: LandingComponent, canActivate: [authGuard] },
       { path: 'acc-statement', component: AccountStatementComponent },
-      { path: 'my-bets', component: MyBetsComponent, canActivate:[authGuard]},
-      { path: '', component: LandingComponent},
-      { path: 'fancy-bets', component: FancybetsComponent},
-      { path: 'exchange-game-bets', component: ExchangegamebetsComponent, canActivate:[authGuard]},
-      { path: 'casino-bets', component: CasinobetsComponent},
-      { path: 'betgame-bettinghistory', component: BetgamebettinghistoryComponent, canActivate:[authGuard]},
-      { path: 'awc-bets', component: AwcbetsComponent},
-      { path: 'profit-loss', component: ProfitlossComponent},
-      { path: 'stake', component: StakeComponent},
-      { path: 'activites', component: ActivitylogsComponent},
-      {path:'support-chat',component:SupportChatComponent}
+      { path: 'my-bets', component: MyBetsComponent, canActivate: [authGuard] },
+      { path: '', component: LandingComponent },
+      { path: 'fancy-bets', component: FancybetsComponent },
+      { path: 'exchange-game-bets', component: ExchangegamebetsComponent, canActivate: [authGuard] },
+      { path: 'casino-bets', component: CasinobetsComponent },
+      { path: 'betgame-bettinghistory', component: BetgamebettinghistoryComponent, canActivate: [authGuard] },
+      { path: 'awc-bets', component: AwcbetsComponent },
+      { path: 'profit-loss', component: ProfitlossComponent },
+      { path: 'stake', component: StakeComponent },
+      { path: 'activites', component: ActivitylogsComponent },
+      { path: 'support-chat', component: SupportChatComponent }
     ]
   }
 ];

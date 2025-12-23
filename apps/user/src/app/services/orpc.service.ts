@@ -7,8 +7,8 @@ import {
 import { QueryCache, QueryClient } from '@tanstack/angular-query-experimental';
 import { toast } from 'ngx-sonner';
 import { appRouter } from '@betting/api/routers/index';
-import { environment } from '../environments/environment';
 import { RouterClient } from '@orpc/server'
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'

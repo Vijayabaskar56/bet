@@ -17,7 +17,7 @@
     "@orpc/openapi": "catalog:",
     "@orpc/server": "catalog:",
     "@orpc/zod": "catalog:",
-    "@prisma/client": "^7.1.0",
+    "@prisma/client": "6.19.0",
     "dotenv": "catalog:",
     "elysia": "catalog:",
     "pino": "^10.1.0",

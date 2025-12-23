@@ -32,7 +32,7 @@ import { AllagentsComponent } from './component/allagents/allagents.component';
 import { MastersComponent } from './component/masters/masters.component';
 import { UserComponent } from './component/user/user.component';
 import { ListingComponent } from './common/listing/listing.component';
-import { authGuard } from './authguard/auth.guard';
+import { authGuard } from './auth/auth.guard';
 import { ErrorComponent } from './common/error/error.component';
 import { SupportchatComponent } from './component/supportchat/supportchat.component';
 import { ChatlistComponent } from './component/chatlist/chatlist.component';
@@ -47,45 +47,46 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   {
     path: '', component: LayoutComponent, children: [
-      {path: 'dashboard', component: DashboardComponent, canActivate: [authGuard]},
-      {path: 'profile', component: ProfileComponent,canActivate: [authGuard]},
-      { path: 'block-market', component: BlockMarketComponent,canActivate: [authGuard] },
-      { path: 'alluserList', component: AlluserComponent,canActivate: [authGuard] },
-      { path: 'bet-live-list', component: BetLiveListComponent,canActivate: [authGuard]},
-      { path: 'awc-casino', component: AwcCasinoComponent,canActivate: [authGuard]},
-      { path: 'bet-games', component: BetGamesComponent,canActivate: [authGuard]},
-      { path: 'bet-list', component: BetListComponent,canActivate: [authGuard]},
-      { path: 'user-bet-history',component: UserBetHistoryComponent, canActivate: [authGuard]},
-      { path: 'banking', component: BankingComponent,canActivate: [authGuard]},
-      { path: 'parlaybetlist', component: ParlaybetlistComponent,canActivate: [authGuard]},
-      { path: 'bankinglog', component: BankinglogComponent,canActivate: [authGuard]},
-      { path: 'risk-management', component: RiskManagementComponent,canActivate: [authGuard]},
-      { path: 'report/pl-downline', component: PlDownlineComponent,canActivate: [authGuard]},
-      { path: 'report/parlay-Downline', component: ParlayDownlineComponent,canActivate: [authGuard]},
-      { path: 'report/pl-market', component: PlMarketComponent,canActivate: [authGuard]},
-      { path: 'report/pnl-match', component: PnlMatchComponent,canActivate: [authGuard]},
-      { path: 'report/pl-player', component: PlPlayerComponent,canActivate: [authGuard]},
-      { path: 'report/pnl-casino-downline', component: PnlCasinoDownlineComponent,canActivate: [authGuard]},
-      { path: 'report/pnl-downline', component: PnlDownlineComponent,canActivate: [authGuard]},
-      { path: 'report/pl-diacasino', component: PlDiacasinoComponent,canActivate: [authGuard]},
-      { path: 'report/pl-betgames', component: PlBetgamesComponent,canActivate: [authGuard]},
-      { path: 'report/pl-auracasino', component: PlAuracasinoComponent,canActivate: [authGuard] },
-      { path: 'report/pl-awccasino', component: PlAwccasinoComponent,canActivate: [authGuard] },
-      { path: 'subadminlist', component: AddsubadminComponent,canActivate: [authGuard]},
-      { path: 'adminlist', component: AdminlistComponent,canActivate: [authGuard]},
-      { path: 'allagents', component: AllagentsComponent,canActivate: [authGuard]},
-      { path: 'masters',component: MastersComponent,canActivate: [authGuard]},
-      { path: 'viewlisting', component: ListingComponent,canActivate: [authGuard]},
-      { path: 'chatlist', component: ChatlistComponent, canActivate: [authGuard]},
-      { path: 'supportChat', component: SupportchatComponent,canActivate: [authGuard]},
-      { path: 'transactionHistory', component: TransactionhistoryComponent,canActivate: [authGuard]},
-      { path: 'supermaster', component: SupermasterComponent , canActivate: [authGuard]},
-      { path: 'bet-limited', component: UserEngagementComponent , canActivate: [authGuard]},
-      { path: 'limitSettings', component: LimitsettingsComponent , canActivate: [authGuard]}
+      { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
+      { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
+      { path: 'block-market', component: BlockMarketComponent, canActivate: [authGuard] },
+      { path: 'alluserList', component: AlluserComponent, canActivate: [authGuard] },
+      { path: 'bet-live-list', component: BetLiveListComponent, canActivate: [authGuard] },
+      { path: 'awc-casino', component: AwcCasinoComponent, canActivate: [authGuard] },
+      { path: 'bet-games', component: BetGamesComponent, canActivate: [authGuard] },
+      { path: 'bet-list', component: BetListComponent, canActivate: [authGuard] },
+      { path: 'user-bet-history', component: UserBetHistoryComponent, canActivate: [authGuard] },
+      { path: 'banking', component: BankingComponent, canActivate: [authGuard] },
+      { path: 'parlaybetlist', component: ParlaybetlistComponent, canActivate: [authGuard] },
+      { path: 'bankinglog', component: BankinglogComponent, canActivate: [authGuard] },
+      { path: 'risk-management', component: RiskManagementComponent, canActivate: [authGuard] },
+      { path: 'report/pl-downline', component: PlDownlineComponent, canActivate: [authGuard] },
+      { path: 'report/parlay-Downline', component: ParlayDownlineComponent, canActivate: [authGuard] },
+      { path: 'report/pl-market', component: PlMarketComponent, canActivate: [authGuard] },
+      { path: 'report/pnl-match', component: PnlMatchComponent, canActivate: [authGuard] },
+      { path: 'report/pl-player', component: PlPlayerComponent, canActivate: [authGuard] },
+      { path: 'report/pnl-casino-downline', component: PnlCasinoDownlineComponent, canActivate: [authGuard] },
+      { path: 'report/pnl-downline', component: PnlDownlineComponent, canActivate: [authGuard] },
+      { path: 'report/pl-diacasino', component: PlDiacasinoComponent, canActivate: [authGuard] },
+      { path: 'report/pl-betgames', component: PlBetgamesComponent, canActivate: [authGuard] },
+      { path: 'report/pl-auracasino', component: PlAuracasinoComponent, canActivate: [authGuard] },
+      { path: 'report/pl-awccasino', component: PlAwccasinoComponent, canActivate: [authGuard] },
+      { path: 'subadminlist', component: AddsubadminComponent, canActivate: [authGuard] },
+      { path: 'adminlist', component: AdminlistComponent, canActivate: [authGuard] },
+      { path: 'allagents', component: AllagentsComponent, canActivate: [authGuard] },
+      { path: 'masters', component: MastersComponent, canActivate: [authGuard] },
+      { path: 'viewlisting', component: ListingComponent, canActivate: [authGuard] },
+      { path: 'chatlist', component: ChatlistComponent, canActivate: [authGuard] },
+      { path: 'supportChat', component: SupportchatComponent, canActivate: [authGuard] },
+      { path: 'transactionHistory', component: TransactionhistoryComponent, canActivate: [authGuard] },
+      { path: 'supermaster', component: SupermasterComponent, canActivate: [authGuard] },
+      { path: 'bet-limited', component: UserEngagementComponent, canActivate: [authGuard] },
+      { path: 'limitSettings', component: LimitsettingsComponent, canActivate: [authGuard] }
 
-    ]},
+    ]
+  },
 
-    { path: '**', component: ErrorComponent}
+  { path: '**', component: ErrorComponent }
 ];
 
 @NgModule({

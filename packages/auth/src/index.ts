@@ -1,4 +1,4 @@
-import prisma from "@my-better-t-app/db";
+import prisma from "@betting/db/index";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 
@@ -6,7 +6,7 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "mongodb",
   }),
-  trustedOrigins: [process.env.CORS_ORIGIN || ""],
+  trustedOrigins: [""],
   emailAndPassword: {
     enabled: true,
   },

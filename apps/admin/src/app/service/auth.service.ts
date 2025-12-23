@@ -28,7 +28,7 @@ export class AuthService {
       },
       onError: (error) => {
         console.error(error);
-        toast.error(error.error.message);
+        // toast.error(error.error.message);
       }
     });
   }
@@ -40,7 +40,7 @@ export class AuthService {
       },
       onError: (error) => {
         console.error(error);
-        toast.error(error.error.message);
+        // toast.error(error.error.message);
       }
     });
   }
@@ -53,7 +53,7 @@ export class AuthService {
       },
       onError: (error) => {
         console.error(error);
-        toast.error(error.error.message);
+        // toast.error(error.error.message);
       }
     });
   }

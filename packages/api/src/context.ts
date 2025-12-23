@@ -1,5 +1,4 @@
 import { auth } from "@betting/auth/index";
-import { ORPCError } from "@orpc/server";
 import type { Context as ElysiaContext } from "elysia";
 export type CreateContextOptions = {
   context: ElysiaContext;
@@ -12,7 +11,10 @@ export async function createContext({ context }: CreateContextOptions) {
   })
 
   if (!sessionData?.session || !sessionData?.user) {
-    throw new ORPCError('UNAUTHORIZED')
+    return {
+      session: null,
+      user: null,
+    };
   }
   return {
     session: sessionData.session,
