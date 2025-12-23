@@ -26,7 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule, provideToastr } from 'ngx-toastr';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { SupportChatComponent } from './component/support-chat/support-chat.component'
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -35,8 +35,9 @@ import { apiHandlerInterceptor } from './interceptors/api-handler.interceptor';
 import { CustomDatePipe } from './pipe/custom-date.pipe';
 import { SortPipe } from './pipe/sort.pipe';
 import { NumberSuffixPipe } from './pipe/number-suffix.pipe';
+import { provideTanStackQuery, QueryClient } from '@tanstack/angular-query-experimental';
 
- 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,8 +87,9 @@ import { NumberSuffixPipe } from './pipe/number-suffix.pipe';
       timeOut: 2000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
-      }),
-      provideAnimationsAsync()
+    }),
+    provideAnimationsAsync(),
+    provideTanStackQuery(new QueryClient())
   ],
   bootstrap: [AppComponent]
 })
