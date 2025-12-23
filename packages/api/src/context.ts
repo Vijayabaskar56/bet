@@ -1,25 +1,24 @@
-import type { LoggerContext } from "@orpc/experimental-pino";
+import { auth } from "@betting/auth/index";
+import { ORPCError } from "@orpc/server";
 import type { Context as ElysiaContext } from "elysia";
-
 export type CreateContextOptions = {
   context: ElysiaContext;
 };
 
-export type Session = {
-  user: {
-    id: string;
-    email: string;
-  };
-} | null;
 
-export type Context = {
-  session: Session;
-} & LoggerContext;
+export async function createContext({ context }: CreateContextOptions) {
+  const sessionData = await auth.api.getSession({
+    headers: context.request.headers
+  })
 
-export async function createContext({ context: _context }: CreateContextOptions): Promise<Context> {
-  // TODO: Add auth session
-  let session: Session = null;
+  if (!sessionData?.session || !sessionData?.user) {
+    throw new ORPCError('UNAUTHORIZED')
+  }
   return {
-    session,
-  } as Context;
+    session: sessionData.session,
+    user: sessionData.user,
+  };
 }
+
+
+export type Context = Awaited<ReturnType<typeof createContext>>;

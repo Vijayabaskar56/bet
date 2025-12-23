@@ -15,6 +15,9 @@
       "@orpc/server": "^1.12.2",
       "@orpc/openapi": "^1.12.2",
       "@orpc/zod": "^1.12.2",
+      "@orpc/client": "^1.12.2",
+      "@orpc/tanstack-query": "^1.12.2",
+      "@tanstack/angular-query-experimental": "^5.90.16",
       "better-auth": "^1.4.7"
     }
   },
