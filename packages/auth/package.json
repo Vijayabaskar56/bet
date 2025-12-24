@@ -15,9 +15,10 @@
     "@betting/config": "workspace:*"
   },
   "dependencies": {
+    "@betting/db": "workspace:*",
     "better-auth": "catalog:",
+    "bson": "^7.0.0",
     "dotenv": "catalog:",
-    "zod": "catalog:",
-    "@betting/db": "workspace:*"
+    "zod": "catalog:"
   }
 }

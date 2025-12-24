@@ -22,7 +22,8 @@
     "elysia": "catalog:",
     "pino": "^10.1.0",
     "zod": "catalog:",
-    "@betting/utils": "workspace:*"
+    "@betting/utils": "workspace:*",
+    "@betting/auth": "workspace:*"
   },
   "devDependencies": {
     "@betting/config": "workspace:*",

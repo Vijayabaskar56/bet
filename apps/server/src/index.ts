@@ -10,6 +10,7 @@ import { LoggingHandlerPlugin } from "@orpc/experimental-pino";
 import { logger } from "@betting/utils";
 import "dotenv/config";
 import { Elysia } from "elysia";
+import { auth } from "@betting/auth";
 
 const rpcHandler = new RPCHandler(appRouter, {
   plugins: [new LoggingHandlerPlugin({ logger })],
@@ -42,13 +43,13 @@ new Elysia()
       credentials: true,
     }),
   )
-  // .all("/api/auth/*", async (context) => {
-  //   const { request, status } = context;
-  //   if (["POST", "GET"].includes(request.method)) {
-  //     return auth.handler(request);
-  //   }
-  //   return status(405);
-  // })
+  .all("/api/auth/*", async (context) => {
+    const { request, status } = context;
+    if (["POST", "GET"].includes(request.method)) {
+      return auth.handler(request);
+    }
+    return status(405);
+  })
   .all("/rpc*", async (context) => {
     const { response } = await rpcHandler.handle(context.request, {
       prefix: "/rpc",
