@@ -35,4 +35,13 @@ export const todoRouter = {
       where: { id: input.id },
     });
   }),
+
+  update: publicProcedure
+    .input(z.object({ id: z.string(), text: z.string().min(1) }))
+    .handler(async ({ input }) => {
+      return await prisma.todo.update({
+        where: { id: input.id },
+        data: { text: input.text },
+      });
+    }),
 };
