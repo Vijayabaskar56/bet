@@ -70,3 +70,14 @@ betting/
 - `bun run db:push`: Push schema changes to database
 - `bun run db:studio`: Open database studio UI
 - `bun run check`: Run Biome formatting and linting
+
+
+---
+## VJ TODO's
+- [] Lock User & Locked By
+- [] Password Change History
+- [] Banking
+- [] Commission Flow
+- [] Account Statement
+- [] Activity Logs
+- [] Sports Settings
