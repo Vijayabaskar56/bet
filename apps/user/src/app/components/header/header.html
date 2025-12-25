@@ -1,0 +1,157 @@
+<header>
+ 
+  <div class="d-lg-none d-block header-bg p-2 ">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex gap-1">
+        <button class="border-0 bg-transparent border-white" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasExample"><i class="text-white bi bi-list"></i></button>
+        <h4 class="text-white fw-semibold">Your Logo</h4>
+      </div>
+      <div class="d-flex text-white flex-column">
+        <span class="fw-semibold">Balance : 1500</span>
+        <div class="d-flex">
+
+          <span>Exp : 0</span>
+          <div class="dropdown">
+            <button class="bg-transparent text-white border-0 fw-bold dropdown-toggle" type="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Demo
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="account">Account Statement</a></li>
+              <li><a class="dropdown-item " routerLink="Current Bet">Current Bet</a></li>
+              <li><a class="dropdown-item" routerLink="result">Casino Reults</a></li>
+              <li><a class="dropdown-item">Set Button Values</a></li>
+              <li><a class="dropdown-item">Sign Out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="p-2 header-bg d-lg-flex d-none justify-content-between align-items-center">
+    <div>
+      <h1 class="text-white fw-semibold">your Logo</h1>
+    </div>
+    <div class="d-flex gap-3 text-white align-items-center ">
+      <i class="bi bi-search"></i>
+      <span class="fw-bold text-white">Rules</span>
+      <div>
+        <span class="d-block fw-bold text-white">Balance : 1550</span>
+        <span class="fw-bold text-white">Exp : 0</span>
+
+      </div>
+      <div class="dropdown">
+        <button class="bg-transparent text-white border-0 fw-bold dropdown-toggle" type="button"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          Demo
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" routerLink="account" >Account Statement</a></li>
+          <li><a class="dropdown-item" routerLink="current-bet" >Current Bet</a></li>
+          <li><a class="dropdown-item" routerLink="result">Casino Reults</a></li>
+          <li><a class="dropdown-item">Set Button Values</a></li>
+          <li><a class="dropdown-item">Sign Out</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+  <ul class="nav nav-bg">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page">HOME</a>
+    </li>
+    @for (item of homeContens; track $index) {
+
+    <li class="nav-item">
+      <a class="nav-link">{{item?.name | uppercase}}</a>
+    </li>
+    }
+
+
+  </ul>
+</header>
+<div class="offcanvas  offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body p-0">
+    <div class="header-bg">
+      <div>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="d-flex justify-content-between align-items-center accordion-button collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                aria-controls="flush-collapseOne">
+                Racing Sports
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <ul class="list-group">
+                  <li class="list-group-item">Horse Racing</li>
+                  <li class="list-group-item">Greyhound Racing</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                Others
+              </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <ul class="list-group">
+                  <li class="list-group-item">Our Casino</li>
+                  <li class="list-group-item">Our VIP Casino</li>
+                  <li class="list-group-item">Our Premium Casino</li>
+                  <li class="list-group-item">Our Virtual</li>
+                  <li class="list-group-item">Tembo</li>
+                  <li class="list-group-item">Live Casino</li>
+                  <li class="list-group-item">Slot Game</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                All Sports
+              </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+
+
+                <ul class="list-group">
+                  <li class="list-group-item"><i class="bi bi-plus-square"></i> Politics</li>
+                  <li class="list-group-item"><i class="bi bi-plus-square"></i> Cricket</li>
+                  <li class="list-group-item"><i class="bi bi-plus-square"></i> Football</li>
+                  <li class="list-group-item"><i class="bi bi-plus-square"></i> Tennis</li>
+                  <li class="list-group-item"><i class="bi bi-plus-square"></i> Badminton</li>
+                  <li class="list-group-item"><i class="bi bi-plus-square"></i> Hockey</li>
+                  <li class="list-group-item"><i class="bi bi-plus-square"></i> Futsal</li>
+                  <li class="list-group-item"><i class="bi bi-plus-square"></i> Handball</li>
+                  <li class="list-group-item"><i class="bi bi-plus-square"></i> Ice Hockey</li>
+                  <li class="list-group-item"><i class="bi bi-plus-square"></i> E-Games</li>
+                  <li class="list-group-item"><i class="bi bi-plus-square"></i> Snooker</li>
+                  <li class="list-group-item"><i class="bi bi-plus-square"></i> Volleyball</li>
+                  <li class="list-group-item"><i class="bi bi-plus-square"></i> Basketball</li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
