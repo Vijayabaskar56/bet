@@ -1,4 +1,106 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'ngx-toastr/toastr';
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.header-bg{
+    background-color: #4E7BA7;
+}
+
+.nav-bg{
+    background-color: #D28F1B;
+}
+
+.nav-item {
+    a{
+        color: #ffffff;
+        font-weight: bold;
+    }
+}
+
+.grid-layout{
+    display: grid;
+    grid-template-columns: 15% 85%;
+}
+.accordion-button{
+    background-color: #4E7BA7;
+    color: white;
+    font-weight: bold;
+}
+.accordion-header{
+    margin: 0;
+}
+.accordion-body {
+    padding: 0;
+    background-color: #bbbbbb;
+}
+
+.nav-tabs{
+    background-color: #cccccc;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;    
+}
+
+.nav-item {
+    button{
+        color: black;
+        font-weight: 600;
+    }
+}
+
+.icon-positive{
+    color: #28a745;
+}
+.icon-negative{
+    color: red;
+}
+
+.nav-link{
+    white-space: nowrap;
+
+}
+
+.nav-link{
+    &.active{
+        background-color: #D28F1B;
+        border-radius: 0;
+        border-style: none;
+        color: white !important;
+    }
+    &:hover{
+        border-radius: 0;
+        border-style: none;
+    }
+}
+.nav-item{
+    border-right: 1px solid #D28F1B;
+}
+.list-group{
+    margin: 0;
+    border-radius: 0;
+}
+.list-group-item{
+    background-color: transparent;
+}
+
+.blue-bg{
+    background-color: #72bbef;
+}
+.pink-bg{
+    background-color: #faa9ba ;
+}
+th,td{
+    padding: 2px;
+}
+
+@media (max-width:1200px) {
+    .grid-layout{
+        grid-template-columns:  100%;
+    }
+
+}
+
+.offcanvas,.offcanvas-header{
+    background-color: #4E7BA7 !important;
+}
+.grid-images{
+    height: 200px;
+    width: 200px;
+}

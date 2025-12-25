@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "dotenv": "catalog:",
+    "prisma": "^7.2.0",
     "zod": "catalog:"
   },
   "devDependencies": {
