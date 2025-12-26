@@ -1,0 +1,27 @@
+model ActivityLog {
+  id        String           @id @default(auto()) @map("_id") @db.ObjectId
+  user_id   String?
+  ipaddress String?
+  city      String?
+  country   String?
+  action    String?
+  type      ActivityLogType?
+  browser   String?
+  os        String?
+  state     String?
+  isp       String?
+  remarks   String?
+  status    String?
+  createdAt DateTime         @default(now())
+
+  @@map("activitylogs")
+}
+
+enum ActivityLogType {
+  LOGIN
+  LOGOUT
+  DEPOSIT
+  WITHDRAW
+  TRANSFER
+  PASSWORD_CHANGE
+}

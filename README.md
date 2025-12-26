@@ -73,11 +73,17 @@ betting/
 
 
 ---
-## VJ TODO's
-- [] Lock User & Locked By
-- [] Password Change History
+## Admin TODO's
+- [X] Lock User & Locked By
+- [X] Password Change History
+- [X] Activity Logs
 - [] Banking
 - [] Commission Flow
 - [] Account Statement
-- [] Activity Logs
-- [] Sports Settings
+- [] Sports Settings , deposite , withdraw , stats
+
+### Continue Later On admin
+- [] Event Profit/Loss
+- [] Downline P/L
+- [] BetList
+- [] Market Analysis 

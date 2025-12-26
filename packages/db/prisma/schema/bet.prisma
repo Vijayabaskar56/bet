@@ -10,12 +10,19 @@ model Bet {
   stake          Float
   initialStake   Float
   liability      Float?
+  maxLoss        Float // Calculated max possible loss (locks exposure)
   eventName      String
   selectionName  String
   status         BetStatus  @default(PENDING)
   matchedTradeId String?    @db.ObjectId
-  createdAt      DateTime   @default(now())
-  updatedAt      DateTime   @updatedAt
+
+  // Settlement fields
+  payout     Float? // Final payout amount after settlement
+  commission Float? // Commission paid to agent
+  settledAt  DateTime? // When bet was settled
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("bets")
 }

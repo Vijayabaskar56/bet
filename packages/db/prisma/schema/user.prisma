@@ -1,32 +1,38 @@
 model User {
-  id                           String           @id @default(auto()) @map("_id") @db.ObjectId
-  name                         String
-  // username                     String           @unique
-  // displayUsername              String?          @unique
-  email                        String
-  emailVerified                Boolean          @default(false)
-  image                        String?
-  status                       Int              @default(1)
-  modifiedAt                   DateTime         @default(now())
-  createdAt                    DateTime         @default(now())
-  role                         String?
-  updatedBy                    String?          @db.ObjectId
-  createdBy                    String?          @db.ObjectId
-  balance                      Float            @default(0)
-  availableBalance             Float            @default(0)
-  escrowBalance                Float            @default(0)
-  deposit_amt                  Float?
-  withdraw_amt                 Float?
-  sportsList                   UserSportsList[]
-  updatedAt                    DateTime         @updatedAt
-  upLineCommisionPercent       Float?           @default(0)
-  openingBalance               Float?           @default(0)
-  exposureLimit                Float?           @default(0)
-  creditReference              Float?           @default(0)
-  mobileNumber                 String?
-  partnership                  String?
-  rollingCommission            RollingCommissionConfig?
-  agentRollingCommission       RollingCommissionConfig?
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  email         String
+  emailVerified Boolean  @default(false)
+  image         String?
+  status        Int      @default(1)
+  modifiedAt    DateTime @default(now())
+  createdAt     DateTime @default(now())
+  role          String?
+  updatedBy     String?  @db.ObjectId
+  parentId      String?  @db.ObjectId // Upline (formerly createdBy)
+
+  // Wallet fields per spec
+  balance          Float  @default(0) // Real money
+  exposure         Float  @default(0) // Sum of max loss on open bets (always negative)
+  creditReference  Float? @default(0) // Max loss allowed by upline
+  exposureLimit    Float? @default(0) // Hard cap on exposure
+  commissionEarned Float  @default(0) // Total commission earned
+
+  // Legacy/tracking fields
+  deposit_amt            Float?
+  withdraw_amt           Float?
+  sportsList             UserSportsList[]
+  updatedAt              DateTime                 @updatedAt
+  upLineCommisionPercent Float?                   @default(0)
+  openingBalance         Float?                   @default(0)
+  mobileNumber           String?
+  partnership            String?
+  rollingCommission      RollingCommissionConfig?
+  agentRollingCommission RollingCommissionConfig?
+  isLocked               Boolean                  @default(false)
+  lockReason             String?
+  deletedAt              DateTime?
+  deletedBy              String?                  @db.ObjectId
 
   // Better Auth Admin Plugin Fields
   banned     Boolean   @default(false)
@@ -92,14 +98,13 @@ model TransactionHistory {
   @@map("transaction_histories")
 }
 
-
 type RollingCommissionConfig {
-  fancy        Int? @default(0)
-  matka        Int? @default(0)
-  casino       Int? @default(0)
-  binary       Int? @default(0)
-  sportbook    Int? @default(0)
-  line         Int? @default(0)
-  bookmaker    Int? @default(0)
+  fancy         Int? @default(0)
+  matka         Int? @default(0)
+  casino        Int? @default(0)
+  binary        Int? @default(0)
+  sportbook     Int? @default(0)
+  line          Int? @default(0)
+  bookmaker     Int? @default(0)
   virtualSports Int? @default(0)
 }
