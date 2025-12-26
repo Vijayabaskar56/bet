@@ -1,24 +1,24 @@
 {
-  "name": "@betting/auth",
-  "type": "module",
-  "exports": {
-    ".": {
-      "default": "./src/index.ts"
-    },
-    "./*": {
-      "default": "./src/*.ts"
-    }
-  },
-  "scripts": {},
-  "devDependencies": {
-    "typescript": "catalog:",
-    "@betting/config": "workspace:*"
-  },
-  "dependencies": {
-    "@betting/db": "workspace:*",
-    "better-auth": "catalog:",
-    "bson": "^7.0.0",
-    "dotenv": "catalog:",
-    "zod": "catalog:"
-  }
+	"name": "@betting/auth",
+	"type": "module",
+	"exports": {
+		".": {
+			"default": "./src/index.ts"
+		},
+		"./*": {
+			"default": "./src/*.ts"
+		}
+	},
+	"scripts": {},
+	"devDependencies": {
+		"typescript": "catalog:",
+		"@betting/config": "workspace:*"
+	},
+	"dependencies": {
+		"@betting/db": "workspace:*",
+		"better-auth": "catalog:",
+		"bson": "^7.0.0",
+		"dotenv": "catalog:",
+		"zod": "catalog:"
+	}
 }

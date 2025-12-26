@@ -1,8 +1,11 @@
 import prisma from "@betting/db/index";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
-import { admin, openAPI } from "better-auth/plugins";
 import { createAuthMiddleware } from "better-auth/api";
+// Use Better Auth's built-in password verification
+// This ensures scrypt parameters (N=16384, r=16, p=1) match exactly
+import { verifyPassword as betterAuthVerifyPassword } from "better-auth/crypto";
+import { admin, openAPI } from "better-auth/plugins";
 import { ObjectId } from "bson";
 import {
 	ac,
@@ -12,10 +15,6 @@ import {
 } from "./permissions";
 import { adminLockedPlugin } from "./plugins/admin-locked";
 import { softDeletePlugin } from "./plugins/soft-delete";
-
-// Use Better Auth's built-in password verification
-// This ensures scrypt parameters (N=16384, r=16, p=1) match exactly
-import { verifyPassword as betterAuthVerifyPassword } from "better-auth/crypto";
 
 async function verifyPassword(
 	password: string,
@@ -166,7 +165,10 @@ export const auth = betterAuth({
 				ctx.path === "/reset-password" ||
 				ctx.path === "/admin/set-user-password"
 			) {
-				const isSuccess = ctx.context.returned instanceof Response ? ctx.context.returned.ok : true; // Better Auth returns Response or data
+				const isSuccess =
+					ctx.context.returned instanceof Response
+						? ctx.context.returned.ok
+						: true; // Better Auth returns Response or data
 				const body = ctx.body;
 				const headers = ctx.headers;
 				if (!headers) return;
