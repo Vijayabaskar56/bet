@@ -13,7 +13,7 @@ import {
 	superadmin,
 	user as userRole,
 } from "./permissions";
-import { adminLockedPlugin } from "./plugins/admin-locked";
+import { adminLockedPlugin  } from "./plugins/admin-locked";
 import { softDeletePlugin } from "./plugins/soft-delete";
 
 async function verifyPassword(
@@ -268,7 +268,6 @@ export const auth = betterAuth({
 								message: "Master password is required",
 							});
 						}
-						console.log(ctx?.body, ctx?.body.data.masterPassword, "ctxbody");
 						return {
 							data: {
 								...user,
@@ -306,3 +305,6 @@ export const auth = betterAuth({
 		},
 	},
 });
+
+export {adminLockedClientPlugin} from './plugins/admin-locked/client'
+export {softDeleteClientPlugin} from './plugins/soft-delete/client'
