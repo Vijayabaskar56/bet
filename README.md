@@ -70,3 +70,20 @@ betting/
 - `bun run db:push`: Push schema changes to database
 - `bun run db:studio`: Open database studio UI
 - `bun run check`: Run Biome formatting and linting
+
+
+---
+## Admin TODO's
+- [X] Lock User & Locked By
+- [X] Password Change History
+- [X] Activity Logs
+- [ ] Banking
+- [ ] Commission Flow
+- [ ] Account Statement
+- [ ] Sports Settings , deposite , withdraw , stats
+
+### Continue Later On admin
+- [ ] Event Profit/Loss
+- [ ] Downline P/L
+- [ ] BetList
+- [ ] Market Analysis 

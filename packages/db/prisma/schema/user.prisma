@@ -1,63 +1,38 @@
 model User {
-  id                           String           @id @default(auto()) @map("_id") @db.ObjectId
-  name                         String // Renamed from user_name - Better Auth required
-  email                        String // Better Auth required
-  emailVerified                Boolean          @default(false) // Better Auth required
-  image                        String? // Renamed from profile_img
-  country_code                 String?
-  phone_no                     Float?
-  dob                          String?
-  status                       Int              @default(1)
-  country                      String           @default("")
-  email_otp                    String?
-  temp_otp                     String?
-  new_email_otp                String?
-  twofaEmailOtp                Int              @default(0)
-  access_key                   Boolean          @default(false)
-  apiAccessOtp                 Int              @default(1)
-  temp_token                   Json?
-  profile_otp                  String           @default("0")
-  app_finger_status            String           @default("0")
-  app_face_status              String           @default("0")
-  reason                       String           @default("")
-  type                         String           @default("")
-  parent_id                    String           @default("")
-  mobile_number                Float?           @default(0)
-  modifiedAt                   DateTime         @default(now())
-  createdAt                    DateTime         @default(now())
-  issuspend                    Boolean          @default(false)
-  address                      String           @default("")
-  city                         String           @default("")
-  role                         String? // Changed from Int to String - Better Auth requirement (superadmin, admin, user)
-  is_logged                    String           @default("0")
-  ipaddr                       String           @default("0")
-  location                     String           @default("0")
-  verifytoken                  String           @default("")
-  device_type                  String           @default("")
-  remember_token               String           @default("")
-  profileimage                 String?
-  deletedAt                    DateTime?
-  authToken                    String?
-  lastSeen                     String?
-  ref_code                     String?
-  ref_by                       String?
-  socket_id                    String?
-  user_engagement_month_report Boolean          @default(true)
-  isBlocked                    Boolean          @default(false)
-  updatedBy                    String?          @db.ObjectId
-  createdBy                    String?          @db.ObjectId
-  balance                      Float            @default(0)
-  availableBalance             Float            @default(0)
-  escrowBalance                Float            @default(0)
-  isDeleted                    Boolean          @default(false)
-  browser                      String?
-  os                           String?
-  version                      String?
-  deposit_amt                  Float?
-  withdraw_amt                 Float?
-  isPasswordUpdatedByUpline    Boolean?
-  sportsList                   UserSportsList[]
-  updatedAt                    DateTime         @updatedAt
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  email         String
+  emailVerified Boolean  @default(false)
+  image         String?
+  status        Int      @default(1)
+  modifiedAt    DateTime @default(now())
+  createdAt     DateTime @default(now())
+  role          String?
+  updatedBy     String?  @db.ObjectId
+  parentId      String?  @db.ObjectId // Upline (formerly createdBy)
+
+  // Wallet fields per spec
+  balance          Float  @default(0) // Real money
+  exposure         Float  @default(0) // Sum of max loss on open bets (always negative)
+  creditReference  Float? @default(0) // Max loss allowed by upline
+  exposureLimit    Float? @default(0) // Hard cap on exposure
+  commissionEarned Float  @default(0) // Total commission earned
+
+  // Legacy/tracking fields
+  deposit_amt            Float?
+  withdraw_amt           Float?
+  sportsList             UserSportsList[]
+  updatedAt              DateTime                 @updatedAt
+  upLineCommisionPercent Float?                   @default(0)
+  openingBalance         Float?                   @default(0)
+  mobileNumber           String?
+  partnership            String?
+  rollingCommission      RollingCommissionConfig?
+  agentRollingCommission RollingCommissionConfig?
+  isLocked               Boolean                  @default(false)
+  lockReason             String?
+  deletedAt              DateTime?
+  deletedBy              String?                  @db.ObjectId
 
   // Better Auth Admin Plugin Fields
   banned     Boolean   @default(false)
@@ -121,4 +96,15 @@ model TransactionHistory {
   updatedAt         DateTime         @updatedAt
 
   @@map("transaction_histories")
+}
+
+type RollingCommissionConfig {
+  fancy         Int? @default(0)
+  matka         Int? @default(0)
+  casino        Int? @default(0)
+  binary        Int? @default(0)
+  sportbook     Int? @default(0)
+  line          Int? @default(0)
+  bookmaker     Int? @default(0)
+  virtualSports Int? @default(0)
 }

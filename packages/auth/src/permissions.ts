@@ -12,7 +12,7 @@ import { defaultStatements } from "better-auth/plugins/admin/access";
 
 // Use default admin statements (user and session resources)
 const statement = {
-  ...defaultStatements,
+	...defaultStatements,
 } as const;
 
 export const ac = createAccessControl(statement);
@@ -24,8 +24,16 @@ export const ac = createAccessControl(statement);
  * - Can create other admins
  */
 export const superadmin = ac.newRole({
-  user: ["create", "list", "set-role", "ban", "impersonate", "delete", "set-password"],
-  session: ["list", "revoke", "delete"],
+	user: [
+		"create",
+		"list",
+		"set-role",
+		"ban",
+		"impersonate",
+		"delete",
+		"set-password",
+	],
+	session: ["list", "revoke", "delete"],
 }) as any;
 
 /**
@@ -36,12 +44,11 @@ export const superadmin = ac.newRole({
  * - CANNOT delete or impersonate users
  */
 export const admin = ac.newRole({
-  user: ["create", "list", "ban", "set-password"],
-  session: ["list", "revoke"],
+	user: ["create", "list", "ban", "set-password"],
+	session: ["list", "revoke"],
 }) as any;
 
 /**
  * User: No admin permissions
  */
 export const user = ac.newRole({}) as any;
-

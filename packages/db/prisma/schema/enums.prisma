@@ -26,6 +26,18 @@ enum TradeStatus {
 enum TransactionType {
   DEPOSIT
   WITHDRAWAL
+  BET
+  SETTLE
+  COMMISSION
+}
+
+enum LedgerType {
+  DEPOSIT
+  WITHDRAW
+  BET_PLACED // Exposure increase
+  BET_SETTLED // Win/loss settlement
+  COMMISSION // Commission earned
+  REFUND // Bet canceled
 }
 
 enum UserStatus {

@@ -1,0 +1,24 @@
+/// Ledger - Immutable audit log for all wallet changes
+/// Per spec: "Never update balance without ledger"
+model Ledger {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String     @db.ObjectId // User whose balance changed
+  type         LedgerType
+  amount       Float // Positive or negative
+  balanceAfter Float // Balance after this transaction
+
+  // Who performed this action
+  performedBy String @db.ObjectId // User/Admin who triggered this action
+
+  // Optional references for tracing
+  betId          String? @db.ObjectId
+  tradeId        String? @db.ObjectId
+  counterpartyId String? @db.ObjectId // For deposits/withdrawals (parent/child)
+
+  description String?
+  ipAddress   String?
+  createdAt   DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@map("ledgers")
+}

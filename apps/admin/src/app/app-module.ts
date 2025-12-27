@@ -28,4 +28,4 @@ import { CommonModule } from '@angular/common';
   ],
   bootstrap: [App]
 })
-export class AppModule { }
+export class AppModule {}
