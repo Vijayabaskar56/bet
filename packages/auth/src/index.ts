@@ -268,7 +268,6 @@ export const auth = betterAuth({
 								message: "Master password is required",
 							});
 						}
-						console.log(ctx?.body, ctx?.body.data.masterPassword, "ctxbody");
 						return {
 							data: {
 								...user,
