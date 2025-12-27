@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    
+}
+
+.login-bg{
+    background: linear-gradient(#535353 0%, #000000 80%);
+}
+
+.login-wrap {
+    box-shadow: 0 5px 20px #00000080;
+}
+
+.form-control:focus{
+    box-shadow: none;
+}
+
+.form-control:focus-visible{
+    border-style: none;
+}
+
+.primary-btn{
+    background: linear-gradient(-180deg,#16ACAB 0, #16ACAB 100%);
+    width: 100%;
+    border-style: none;
+    padding: 5px 10px;
+    border-radius: 8px;
+}

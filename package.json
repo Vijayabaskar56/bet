@@ -40,6 +40,8 @@
     "db:down": "turbo -F @betting/db db:down"
   },
   "dependencies": {
+    "@angular/cli": "^21.0.4",
+    "bootstrap": "^5.3.8",
     "dotenv": "catalog:",
     "prisma": "^7.2.0",
     "zod": "catalog:"

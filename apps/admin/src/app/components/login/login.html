@@ -1,0 +1,55 @@
+<div class="container-fluid login-bg ">
+    <div class="row justify-content-center vh-100 align-items-center">
+        <div class="col-md-4 col-12">
+            <div class="login-wrap p-5  ">
+                <h1 class="text-white text-center">Your Logo</h1>
+                <form action="login" #loginForm="ngForm" (ngSubmit)="submit(loginForm)" >
+                    <div class="py-2 ">
+                        <div class="d-flex form-control px-1 py-0 m-0 align-items-center justify-content-between">
+                            <input type="text" 
+                           name="email"
+                           ngModel
+                           required
+                           minlength="3"
+                           #email="ngModel"
+                           pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            class="form-control border-0"
+                                placeholder="email">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                        @if (submitted && email?.errors?.['required']) {
+                            <span class="text-danger">email is required</span>
+                        }
+                        @if (submitted && email?.errors?.['pattern']) {
+                            <span class="text-danger">enter a valid email address</span>
+                        }
+                    </div>
+                    <div class="py-2">
+                        <div class="d-flex form-control px-1 py-0 m-0 align-items-center justify-content-between">
+                            <input 
+                            name="password"
+                            ngModel
+                            #password = "ngModel"
+                            required
+                            [type]="showPassword ? 'text' : 'password'" class="form-control border-0"
+                                placeholder="password">
+                            @if (showPassword) {
+                            <i (click)="showPassword = !showPassword" class="bi bi-eye-fill"></i>
+                            } @else {
+                            <i (click)="showPassword = !showPassword" class="bi bi-eye-slash-fill"></i>
+                            }
+                        </div>
+                        @if (submitted && password?.errors?.['required']) {
+                            <span class="text-danger">password is required</span>
+                        }
+                    </div>
+
+                    <button class="primary-btn my-2 text-white fw-semibold">Login <i
+                            class="bi bi-box-arrow-right"></i></button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
