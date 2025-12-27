@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { Auth } from '../../services/auth';
 import { NgForm } from '@angular/forms';
+import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-login',
@@ -12,19 +12,19 @@ export class Login {
 
   _api = inject(Auth);
 
-  showPassword:boolean = false;
-  submitted:boolean = false;
+  showPassword: boolean = false;
+  submitted: boolean = false;
 
 
-  submit(form:NgForm){
+  submit(form: NgForm) {
     this.submitted = true;
-    if(form?.valid){
+    if (form?.valid) {
       this.submitted = false;
       const payload = {
         ...form.value
       }
-      payload.rememberMe = null
-      payload.callbackURL = null
+      payload.rememberMe = true
+      payload.callbackURL = '/'
       this._api.login(payload)
     }
   }

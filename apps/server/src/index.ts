@@ -37,7 +37,7 @@ const apiHandler = new OpenAPIHandler(appRouter, {
 new Elysia()
 	.use(
 		cors({
-			origin: process.env.CORS_ORIGIN || "",
+			origin: 'http://localhost:3002',
 			methods: ["GET", "POST", "OPTIONS"],
 			allowedHeaders: ["Content-Type", "Authorization"],
 			credentials: true,

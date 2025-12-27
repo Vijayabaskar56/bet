@@ -1,22 +1,26 @@
 import { Injectable } from '@angular/core';
-import { createAuthClient } from "@better-auth/client";
+import { adminLockedClientPlugin, softDeleteClientPlugin } from "@betting/auth/client";
+import { createAuthClient } from "better-auth/client";
+import { admin } from 'better-auth/plugins';
 @Injectable({
   providedIn: 'root',
 })
-export class Auth { 
-      
-      public auth = createAuthClient()({
-        
-        baseURL:'http://localhost:3001/api/auth',
-        betterFetchOptions:{
-         credentials:"include",
-         
-         
-        }
-      });
+export class Auth {
 
-      
-      login(payload:any){
-        return this.auth.signIn({payload,provider:'email'})
-      }
+  public auth = createAuthClient({
+    baseURL: 'http://localhost:3000',
+    fetchOptions: {
+      credentials: 'include'
+    },
+    plugins: [
+      admin(),
+      adminLockedClientPlugin(),
+      softDeleteClientPlugin(),
+    ]
+  });
+
+
+  login(payload: Parameters<typeof this.auth.signIn.email>[0]) {
+    return this.auth.signIn.email(payload)
+  }
 }
